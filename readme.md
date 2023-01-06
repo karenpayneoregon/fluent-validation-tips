@@ -220,13 +220,40 @@ public class EmployeeValidator : AbstractValidator<Employee>
 
 
 
+# Related
 
+[Validating application data with Fluent Validation](https://github.com/karenpayneoregon/teaching-simple-validation) provides similar code samples along with using a `json` file to store rule data.
 
+```json
+{
+  "FirstNameSettings": {
+    "MinimumLength": 3,
+    "MaximumLength": 10,
+    "WithName": "First name"
+  },
+  "LastNameSettings": {
+    "MinimumLength": 5,
+    "MaximumLength": 30,
+    "WithName": "Last name"
+  }
+}
+```
 
+And PreValidation
 
+```csharp
+protected override bool PreValidate(ValidationContext<Customer> context, ValidationResult result)
+{
+    if (context.InstanceToValidate is null)
+    {
+        result.Errors.Add(new ValidationFailure("", $"Dude, must have a none null instance of {nameof(Customer)}"));
+        return false;
+    }
 
+    return true;
+}
+```
 
+# Summary
 
-
-
-
+Using [FluentValidation](https://docs.fluentvalidation.net/en/latest/) is one way to perform validation, may or may not be right for every developer, some may want to use [Data Annotations](https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.dataannotations?view=net-7.0) or a third party library like [Postsharp](https://www.postsharp.net/).
