@@ -18,7 +18,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\NorthWindLibrary\NorthWindLibrary.csproj" />
 	  <ProjectReference Include="..\ValidationLibrary\ValidationLibrary.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="DataScripts\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="appsettings.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 
 </Project>

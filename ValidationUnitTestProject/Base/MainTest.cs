@@ -1,4 +1,4 @@
-﻿using ValidationLibrary;
+﻿using ValidationLibrary.Models;
 
 
 // ReSharper disable once CheckNamespace - do not change
@@ -13,7 +13,7 @@ public partial class MainTest
     /// </summary>
     /// <param name="testContext"></param>
     [ClassInitialize()]
-    public static void MyClassInitialize(TestContext testContext)
+    public static void ClassInitialize(TestContext testContext)
     {
         TestResults = new List<TestContext>();
     }
@@ -23,7 +23,8 @@ public partial class MainTest
         UserName = "billyBob",
         Password = "my@Password1",
         EmailAddress = "billyBob@gmailcom",
-        PasswordConfirmation = "my@Password1"
+        PasswordConfirmation = "my@Password1",
+        PhoneNumber = "999-1234"
     };
 
     protected Employee EmployeeInstance = new Employee()
@@ -32,6 +33,7 @@ public partial class MainTest
         Password = "my@Password1",
         PasswordConfirmation = "my@Password1",
         EmailAddress = "billyBob@gmail.met",
+        PhoneNumber = "654-1234",
         Manager = "Jim Adams"
     };
 }

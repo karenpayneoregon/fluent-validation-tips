@@ -71,6 +71,167 @@ else
 }
 ```
 
+# Predicate Validator
+
+[Predicate Validator](https://docs.fluentvalidation.net/en/latest/custom-validators.html?highlight=IRuleBuilder#predicate-validator) allows a developer to write custom validators. The following sets up a rule for a string property named PhoneNumber to be `xxx-xxxx`
+
+
+```csharp
+public static class Extensions
+{
+    public static IRuleBuilderOptions<T, string> MatchPhoneNumber<T>(this IRuleBuilder<T, string> rule)
+        => rule.Matches(@"^(1-)?\d{3}-\d{4}$").WithMessage("Invalid phone number");
+}
+```
+
+The validator
+
+```csharp
+public class PhoneNumberValidator : AbstractValidator<Person>
+{
+    public PhoneNumberValidator()
+    {
+        RuleFor(person => person.PhoneNumber)
+            .MatchPhoneNumber();
+    }
+}
+```
+
+Then in this case include the validator in the PersonValidator.
+
+```csharp
+public class PersonValidator : AbstractValidator<Person>
+{
+    public PersonValidator()
+    {
+
+        Include(new UserNameValidator());
+        Include(new EmailAddressValidator());
+        Include(new PasswordValidator());
+        Include(new PhoneNumberValidator());
+
+    }
+}
+```
+
+Run a test.
+
+```csharp
+[TestMethod]
+[TestTraits(Trait.Validation)]
+public void InvalidPhoneNumberTest()
+{
+    // arrange
+    var person = EmployeeInstance;
+
+    person.PhoneNumber = "11-999";
+
+    PersonValidator validator = new();
+
+    // act
+    ValidationResult result = validator.Validate(person);
+
+    // assert
+    Assert.IsTrue(result.HasErrorMessage("Invalid phone number"));
+
+}
+```
+
+# EF Core example
+
+In this example the goal is to validate that in a Category table, prior to saving to the database ensure the category name is unique.
+
+
+```csharp
+public partial class Categories
+{
+    public int CategoryId { get; set; }
+    public string CategoryName { get; set; }
+}
+```
+
+The following method will be used in the `CategoryValidator` below.
+
+```csharp
+public static class ValidationHelpers
+{
+    /// <summary>
+    /// Validate we are not going to add a duplicate category name
+    /// </summary>
+    /// <param name="category"></param>
+    /// <param name="name"></param>
+    /// <returns></returns>
+    public static bool UniqueName(Categories category, string name)
+    {
+        Context context = new Context();
+        var categoryItem = context.Categories.AsEnumerable()
+            .SingleOrDefault(cat =>
+                string.Equals(cat.CategoryName.ToLower(), name.ToLower(), StringComparison.OrdinalIgnoreCase));
+
+
+
+        if (categoryItem == null)
+        {
+            return true;
+        }
+
+        return categoryItem.CategoryId == category.CategoryId;
+    }
+}
+```
+
+The validator
+
+```csharp
+public class CategoryValidator : AbstractValidator<Categories>
+{
+    public CategoryValidator()
+    {
+        RuleFor(category => category.CategoryName)
+            .Must((cat, x) => 
+                ValidationHelpers.UniqueName(cat, cat.CategoryName));
+    }
+}
+```
+
+Unit test
+
+- First test checks to see if there is a category name in the table for Produce which there is.
+- Second test checks to see if there is a category name in the table Coffee where there is not.
+
+```csharp
+[TestClass]
+public partial class NorthWindTest : TestBase
+{
+
+    [TestMethod]
+    [TestTraits(Trait.Validation)]
+    public void CategoryNameExistsTest()
+    {
+        Categories category = new() { CategoryName = "Produce" };
+
+        CategoryValidator validator = new();
+        ValidationResult result = validator.Validate(category);
+
+        Assert.IsFalse(result.IsValid);
+    }
+
+    [TestMethod]
+    [TestTraits(Trait.Validation)]
+    public void CategoryNameDoesNExistsTest()
+    {
+        Categories category = new() { CategoryName = "Coffee" };
+
+        CategoryValidator validator = new();
+        ValidationResult result = validator.Validate(category);
+
+        Assert.IsTrue(result.IsValid);
+    }
+}
+```
+
+
+
 # ASP.NET 
 
 See the FluentValidation [documentation](https://docs.fluentvalidation.net/en/latest/aspnet.html) which describe several approaches to implement with dependency injection.
@@ -254,6 +415,16 @@ protected override bool PreValidate(ValidationContext<Customer> context, Validat
 }
 ```
 
+# See also
+
+Another [repository](https://github.com/karenpayneoregon/ssn-validator) to check out if there is a need to validate SSN.
+
+# Requires
+
+- Microsoft Visual Studio 2022 17.4.x or higher
+
 # Summary
 
 Using [FluentValidation](https://docs.fluentvalidation.net/en/latest/) is one way to perform validation, may or may not be right for every developer, some may want to use [Data Annotations](https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.dataannotations?view=net-7.0) or a third party library like [Postsharp](https://www.postsharp.net/).
+
+
