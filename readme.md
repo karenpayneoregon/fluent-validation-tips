@@ -234,7 +234,8 @@ public partial class NorthWindTest : TestBase
 
 # ASP.NET 
 
-See the FluentValidation [documentation](https://docs.fluentvalidation.net/en/latest/aspnet.html) which describe several approaches to implement with dependency injection.
+- See the FluentValidation [documentation](https://docs.fluentvalidation.net/en/latest/aspnet.html) which describe several approaches to implement with dependency injection.
+- Here is an [excellent example](https://baskarmib.netlify.app/content/posts/2022/12/22/implementing-validations-in-net-core-api/) for implementing in ASP.NET Core
 
 
 # Tips
