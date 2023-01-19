@@ -1,0 +1,53 @@
+﻿@page
+@model FluentWebApplication.Pages.ListModel
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<div class="alert alert-primary" role="alert">
+    People
+</div>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Person[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person[0].EmailAddress)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model.Person)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailAddress)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.PersonId" class="btn btn-primary">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

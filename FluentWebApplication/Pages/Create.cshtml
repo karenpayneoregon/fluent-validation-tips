@@ -1,0 +1,50 @@
+﻿@page
+@model FluentWebApplication.Pages.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="alert alert-primary" role="alert">
+    Create
+</div>
+
+
+<div class="row">
+    <div class="col-md-6">
+
+        <form method="post">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Person.FirstName"></label>
+                <input asp-for="Person.FirstName" class="form-control"/>
+                <span asp-validation-for="Person.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Person.LastName"></label>
+                <input asp-for="Person.LastName" class="form-control"/>
+                <span asp-validation-for="Person.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Person.EmailAddress"></label>
+                <input asp-for="Person.EmailAddress" class="form-control"/>
+                <span asp-validation-for="Person.EmailAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary mt-2"/>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<div>
+    <a asp-page="List" class="btn btn-primary mt-2">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
