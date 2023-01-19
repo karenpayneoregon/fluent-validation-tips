@@ -3,17 +3,12 @@ using ValidationLibrary.Models;
 
 namespace ValidationLibrary.Validators;
 
-public class PersonValidator : AbstractValidator<Person>
+public class UserValidator : AbstractValidator<Person>
 {
-    public PersonValidator()
+    public UserValidator()
     {
-
         Include(new UserNameValidator());
         Include(new EmailAddressValidator());
         Include(new PasswordValidator());
-        Include(new PhoneNumberValidator());
-
     }
-
-
 }
