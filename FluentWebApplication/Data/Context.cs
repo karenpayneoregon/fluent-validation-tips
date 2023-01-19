@@ -20,10 +20,6 @@ public partial class Context : DbContext
 
     public virtual DbSet<Person> Person { get; set; }
 
-//    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-//        => optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=FluentValidation1;Integrated Security=True");
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Person>(entity =>
@@ -32,6 +28,23 @@ public partial class Context : DbContext
             entity.Property(e => e.FirstName).IsRequired();
             entity.Property(e => e.LastName).IsRequired();
         });
+
+        modelBuilder.Entity<Person>().HasData(
+            new Person()
+            {
+                PersonId = 1,
+                FirstName = "Karen",
+                LastName = "Payne",
+                EmailAddress = "payne@comcast.net"
+            },
+            new Person()
+            {
+                PersonId = 2,
+                FirstName = "Bob",
+                LastName = "Smith",
+                EmailAddress = "BillyBob@bear.com"
+            }
+        );
 
         OnModelCreatingPartial(modelBuilder);
     }

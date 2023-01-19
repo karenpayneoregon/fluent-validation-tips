@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using FluentWebApplication.Classes;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using FluentWebApplication.Data;
 using FluentWebApplication.Models;
@@ -11,7 +12,14 @@ public class ListModel : PageModel
 
     public ListModel(Context context)
     {
+        CancellationTokenSource cancellationTokenSource = new(TimeSpan.FromSeconds(1));
         _context = context;
+        var success = context.CanConnectAsync(cancellationTokenSource.Token);
+        if (success == false)
+        {
+            _context.Database.EnsureDeleted();
+            _context.Database.EnsureCreated();
+        }
     }
 
     public IList<Person> Person { get;set; } = default!;
