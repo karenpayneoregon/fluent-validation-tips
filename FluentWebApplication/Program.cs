@@ -3,6 +3,9 @@ using FluentValidation.AspNetCore;
 using FluentWebApplication.Data;
 using FluentWebApplication.Models;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
+using Serilog.Sinks.SystemConsole.Themes;
+using System.Diagnostics;
 
 namespace FluentWebApplication;
 
@@ -18,13 +21,20 @@ public class Program
         builder.Services.AddScoped<IValidator<Person>, PersonValidator>();
         builder.Services.AddFluentValidationAutoValidation();
 
+        // colorize output
+        builder.Host.UseSerilog(( _, configuration) =>
+            configuration.WriteTo.Console(theme: AnsiConsoleTheme.Code));
+
         var configuration = new ConfigurationBuilder()
             .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
             .AddJsonFile("appsettings.json")
             .Build();
 
         builder.Services.AddDbContextPool<Context>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
+                .EnableSensitiveDataLogging()
+                .LogTo(message => 
+                    Debug.WriteLine(message), LogLevel.Information,null));
 
         var app = builder.Build();
 
