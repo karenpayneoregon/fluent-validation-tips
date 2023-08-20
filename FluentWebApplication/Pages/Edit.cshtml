@@ -14,22 +14,22 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Person.PersonId" />
-            <div class="form-group">
+            <div>
                 <label asp-for="Person.FirstName"></label>
                 <input asp-for="Person.FirstName" class="form-control" />
                 <span asp-validation-for="Person.FirstName" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div>
                 <label asp-for="Person.LastName"></label>
                 <input asp-for="Person.LastName" class="form-control" />
                 <span asp-validation-for="Person.LastName" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div>
                 <label asp-for="Person.EmailAddress"></label>
                 <input asp-for="Person.EmailAddress" class="form-control" />
                 <span asp-validation-for="Person.EmailAddress" class="text-danger"></span>
             </div>
-            <div class="form-group mt-2">
+            <div class="mt-2">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>

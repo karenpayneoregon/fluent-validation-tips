@@ -18,7 +18,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidationUnitTestProject",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NorthWindLibrary", "NorthWindLibrary\NorthWindLibrary.csproj", "{ED91C297-9EAA-4314-8F3F-B5C892FCCFC7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "We projects", "We projects", "{03BFF7D5-3041-4234-93EC-EF1E4F0C80CB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web projects", "Web projects", "{03BFF7D5-3041-4234-93EC-EF1E4F0C80CB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentWebApplication", "FluentWebApplication\FluentWebApplication.csproj", "{3E4FB172-FF63-4024-9B44-559E529BE130}"
 EndProject

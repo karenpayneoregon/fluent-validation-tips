@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using FluentWebApplication.Data;
 using FluentWebApplication.Models;
+using Serilog;
 
 namespace FluentWebApplication.Pages;
 
@@ -15,6 +16,7 @@ public class ListModel : PageModel
         CancellationTokenSource cancellationTokenSource = new(TimeSpan.FromSeconds(1));
         _context = context;
         var success = context.CanConnectAsync(cancellationTokenSource.Token);
+        
         if (success == false)
         {
             _context.Database.EnsureDeleted();

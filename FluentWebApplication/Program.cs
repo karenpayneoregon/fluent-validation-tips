@@ -25,13 +25,9 @@ public class Program
         builder.Host.UseSerilog(( _, configuration) =>
             configuration.WriteTo.Console(theme: AnsiConsoleTheme.Code));
 
-        var configuration = new ConfigurationBuilder()
-            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-            .AddJsonFile("appsettings.json")
-            .Build();
 
         builder.Services.AddDbContextPool<Context>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
                 .EnableSensitiveDataLogging()
                 .LogTo(message => 
                     Debug.WriteLine(message), LogLevel.Information,null));
