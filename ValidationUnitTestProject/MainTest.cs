@@ -1,4 +1,5 @@
 using FluentValidation.Results;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ValidationLibrary.Models;
 using ValidationLibrary.Validators;
 using ValidationUnitTestProject.Base;
@@ -117,5 +118,26 @@ public partial class MainTest : TestBase
         // assert
         Assert.IsFalse(result.IsValid);
 
+    }
+
+    [TestMethod] 
+    [TestTraits(Trait.Validation)]
+    public void ValidHumanBirthDate()
+    {
+        Human human = HumanInstance;
+        HumanValidator validator = new();
+        ValidationResult result = validator.Validate(human);
+        Assert.IsTrue(result.IsValid);
+    }
+    [TestMethod]
+    [TestTraits(Trait.Validation)]
+    public void InvalidHumanBirthDate()
+    {
+        Human human = HumanInstance;
+        
+        human.BirthDate = new DateOnly(2025, 1, 1);
+        HumanValidator validator = new();
+        ValidationResult result = validator.Validate(human);
+        Assert.IsFalse(result.IsValid);
     }
 }

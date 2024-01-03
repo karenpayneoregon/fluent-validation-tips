@@ -1,9 +1,15 @@
 ﻿using FluentValidation;
-using System.Collections.Generic;
+
 
 namespace ValidationLibrary.LanguageExtensions;
 public static class RuleBuilderExtensions
 {
+    /// <summary>
+    /// Matches a specific phone number pattern nnn-nnnn
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="ruleBuilder"></param>
+    /// <returns></returns>
     public static IRuleBuilderOptions<T, string> MatchPhoneNumber<T>(this IRuleBuilder<T, string> ruleBuilder)
         => ruleBuilder
             .Matches(@"^(1-)?\d{3}-\d{4}$")

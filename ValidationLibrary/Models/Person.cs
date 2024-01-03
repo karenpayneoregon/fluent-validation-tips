@@ -1,4 +1,6 @@
-﻿namespace ValidationLibrary.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ValidationLibrary.Models;
 public class Person
 {
     public string UserName { get; set; }

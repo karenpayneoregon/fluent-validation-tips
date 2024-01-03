@@ -12,3 +12,4 @@ public class UserNameValidator : AbstractValidator<Person>
             .MinimumLength(3);
     }
 }
+

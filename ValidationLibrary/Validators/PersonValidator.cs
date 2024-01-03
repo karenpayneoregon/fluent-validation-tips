@@ -7,14 +7,10 @@ public class PersonValidator : AbstractValidator<Person>
 {
     public PersonValidator()
     {
-
         Include(new UserNameValidator());
-        Include(new EmailAddressValidator());
         Include(new PasswordValidator());
+        Include(new EmailAddressValidator());
         Include(new PhoneNumberValidator());
-
     }
-
-
 }
 
