@@ -24,4 +24,14 @@ public static class RuleBuilderExtensions
         => ruleBuilder
             .Must(m => m != null && !m.EndsWith(" "))
             .WithMessage("'{PropertyName}' should not end with whitespace");
+
+    public static IRuleBuilderOptions<T, DateOnly> BirthDateRule<T>(this IRuleBuilder<T, DateOnly> ruleBuilder)
+    {
+        int minYear = DateTime.Now.AddYears(-100).Year;
+        return ruleBuilder
+            .Must(x => x.Year > minYear && x.Year <= DateTime.Now.Year)
+            .WithMessage($"Birth date must be greater than {minYear} " +
+                         $"year and less than or equal to {DateTime.Now.Year} ");
+    }
+
 }
