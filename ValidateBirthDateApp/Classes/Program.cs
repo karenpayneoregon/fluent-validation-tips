@@ -12,6 +12,7 @@ internal partial class Program
         Console.Title = "FluentValidation Code sample";
 
         WindowUtility.SetConsoleWindowPosition(WindowUtility.AnchorWindow.Center);
+
         // Set up FluentValidation for .WithName
         ValidatorOptions.Global.DisplayNameResolver = (type, memberInfo, expression) =>
             ValidatorOptions.Global.PropertyNameResolver(type, memberInfo, expression)
