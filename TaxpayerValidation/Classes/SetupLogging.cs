@@ -1,5 +1,5 @@
 ﻿using Serilog;
-using Serilog.Events;
+using static System.DateTime;
 using SeriLogThemesLibrary;
 
 namespace TaxpayerValidation.Classes;
@@ -14,8 +14,11 @@ public class SetupLogging
     public static void Development()
     {
         Log.Logger = new LoggerConfiguration()
-            .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-            .WriteTo.Console(theme: SeriLogCustomThemes.Default())
+            .MinimumLevel.Verbose()
+            .WriteTo.Console(theme: SeriLogCustomThemes.Theme1())
+            .WriteTo.File(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LogFiles", $"{Now.Year}-{Now.Month}-{Now.Day}", "Log.txt"),
+                rollingInterval: RollingInterval.Infinite,
+                outputTemplate: "[{Timestamp:yyyy-MM-dd HH:mm:ss.fff} [{Level}] {Message}{NewLine}{Exception}")
             .CreateLogger();
     }
 }

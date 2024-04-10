@@ -3,6 +3,7 @@
 This project is to demonstrate the basics for working with SQL-Server database data using Microsoft [EF Core](https://learn.microsoft.com/en-us/ef/core/) which is the flagship for working with data from any major database.
 
 - All containers and configurations for interacting with data were done using a free extension to Visual Studio known as [EF Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools).
+- Logging for data operations by Karen Payne's [EntityCoreFileLogger](https://www.nuget.org/packages/EntityCoreFileLogger/#readme-body-tab) NuGet package.
 - Using Visual Studio, CRUD pages where created as shown below
 
 ![Figure1](assets/Figure1.png)

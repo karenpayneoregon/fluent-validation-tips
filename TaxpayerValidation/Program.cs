@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using EntityCoreFileLogger;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
@@ -19,22 +20,27 @@ public class Program
         
         builder.Services.AddScoped<IValidator<Taxpayer>, TaxpayerValidator>();
         builder.Services.AddFluentValidationAutoValidation();
-
+        
+        // setup logging
         SetupLogging.Development();
 
+        // Setup EF Core - note that the sql will be outputted to the console window 
+        // and a text file, one per day under the project folder while for production
+        // the log file would go where it should.
         builder.Services.AddDbContextPool<Context>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
                 .EnableSensitiveDataLogging()
-                .LogTo(message =>
-                    Debug.WriteLine(message), LogLevel.Information, null));
+                .LogTo(new DbContextToFileLogger().Log, new[]
+                    {
+                        DbLoggerCategory.Database.Command.Name
+                    },
+                    LogLevel.Information));
 
         var app = builder.Build();
 
-        // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
         {
             app.UseExceptionHandler("/Error");
-            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
         }
 

@@ -20,6 +20,8 @@
 	<ItemGroup>
 
 		<PackageReference Include="ConfigurationLibrary" Version="1.0.6" />
+
+		<PackageReference Include="EntityCoreFileLogger" Version="1.0.0" />
 		<PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
 
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4">
@@ -42,4 +44,13 @@
 	<ItemGroup>
 	  <Folder Include="assets\" />
 	</ItemGroup>
+
+	<Target Name="MakeMyDir" AfterTargets="Build">
+		<MakeDir Directories="$(OutDir)LogFiles" />
+	</Target>
+
+	<Target Name="MakeLogDir" AfterTargets="Build">
+		<!-- Create folder LogFiles than each day create a folder with the current date -->
+		<MakeDir Directories="$(OutDir)LogFiles\$([System.DateTime]::Now.ToString(yyyy-MM-dd))" />
+	</Target>
 </Project>
