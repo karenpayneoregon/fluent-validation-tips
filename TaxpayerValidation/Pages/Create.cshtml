@@ -1,0 +1,54 @@
+﻿@page
+@model TaxpayerValidation.Pages.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="fs-2">Create new taxpayer</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Taxpayer.FirstName" class="control-label"></label>
+                <input asp-for="Taxpayer.FirstName" class="form-control" />
+                <span asp-validation-for="Taxpayer.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Taxpayer.LastName" class="control-label"></label>
+                <input asp-for="Taxpayer.LastName" class="form-control" />
+                <span asp-validation-for="Taxpayer.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Taxpayer.SSN" class="control-label"></label>
+                <input asp-for="Taxpayer.SSN" class="form-control" type="password" />
+                <span asp-validation-for="Taxpayer.SSN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Taxpayer.PIN" class="control-label"></label>
+                <input asp-for="Taxpayer.PIN" class="form-control" />
+                <span asp-validation-for="Taxpayer.PIN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Taxpayer.StartDate" class="control-label"></label>
+                <input asp-for="Taxpayer.StartDate" class="form-control" />
+                <span asp-validation-for="Taxpayer.StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary mt-3" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,69 @@
+﻿@page
+@model TaxpayerValidation.Pages.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="fs-2 mb-4">Edit taxpayer</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Taxpayer.Id" />
+            <div class="form-group">
+                <label asp-for="Taxpayer.FirstName" class="control-label"></label>
+                <input asp-for="Taxpayer.FirstName" class="form-control" />
+                <span asp-validation-for="Taxpayer.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Taxpayer.LastName" class="control-label"></label>
+                <input asp-for="Taxpayer.LastName" class="form-control" />
+                <span asp-validation-for="Taxpayer.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Taxpayer.SSN" class="control-label"></label>
+                <input asp-for="Taxpayer.SSN" class="form-control" id="ssn" />
+                <span asp-validation-for="Taxpayer.SSN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Taxpayer.PIN" class="control-label"></label>
+                <input asp-for="Taxpayer.PIN" class="form-control" />
+                <span asp-validation-for="Taxpayer.PIN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Taxpayer.StartDate" class="control-label"></label>
+                <input asp-for="Taxpayer.StartDate" class="form-control" type="date" />
+                <span asp-validation-for="Taxpayer.StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary mt-3" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-auto">
+        <span class="fst-italic">* Left SSN exposed for demonstration purposes. *</span>
+    </div>
+    
+</div>
+<div class="row mt-3">
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script type="text/javascript">
+        $('#ssn').keyup(function() {
+            var val = this.value.replace(/\D/g, '');
+            val = val.replace(/^(\d{3})/, '$1-');
+            val = val.replace(/-(\d{2})/, '-$1-');
+            val = val.replace(/(\d)-(\d{4}).*/, '$1-$2');
+            this.value = val;
+        });
+    </script>
+}

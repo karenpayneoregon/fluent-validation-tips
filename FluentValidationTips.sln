@@ -5,6 +5,7 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E3918825-A54D-4238-96C0-5D933EB4800E}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		readme.md = readme.md
 	EndProjectSection
 EndProject
@@ -26,7 +27,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Console projects", "Console
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidateItemInListApp", "ValidateItemInListApp\ValidateItemInListApp.csproj", "{E7CC7614-11F5-413A-B662-D67BD1AC75A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidateBirthDateApp", "ValidateBirthDateApp\ValidateBirthDateApp.csproj", "{A83ED68F-73BC-4FF9-A8B8-A477F664D983}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidateBirthDateApp", "ValidateBirthDateApp\ValidateBirthDateApp.csproj", "{A83ED68F-73BC-4FF9-A8B8-A477F664D983}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxpayerValidation", "TaxpayerValidation\TaxpayerValidation.csproj", "{CE3E8AA6-2B3F-4296-8047-DAD354CF72E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,6 +61,10 @@ Global
 		{A83ED68F-73BC-4FF9-A8B8-A477F664D983}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A83ED68F-73BC-4FF9-A8B8-A477F664D983}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A83ED68F-73BC-4FF9-A8B8-A477F664D983}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE3E8AA6-2B3F-4296-8047-DAD354CF72E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE3E8AA6-2B3F-4296-8047-DAD354CF72E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE3E8AA6-2B3F-4296-8047-DAD354CF72E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE3E8AA6-2B3F-4296-8047-DAD354CF72E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +76,7 @@ Global
 		{3E4FB172-FF63-4024-9B44-559E529BE130} = {03BFF7D5-3041-4234-93EC-EF1E4F0C80CB}
 		{E7CC7614-11F5-413A-B662-D67BD1AC75A5} = {CBF623D7-BC83-4B2E-9C80-FD730F4EFAAA}
 		{A83ED68F-73BC-4FF9-A8B8-A477F664D983} = {CBF623D7-BC83-4B2E-9C80-FD730F4EFAAA}
+		{CE3E8AA6-2B3F-4296-8047-DAD354CF72E9} = {03BFF7D5-3041-4234-93EC-EF1E4F0C80CB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28789BDB-F02C-4BB5-9FCE-2503BF576263}

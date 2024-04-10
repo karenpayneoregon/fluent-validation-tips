@@ -1,0 +1,52 @@
+﻿@page
+@using TaxpayerValidation.LanguageExtensions
+@model TaxpayerValidation.Pages.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<h1 class="fs-2 mb-3">Are you sure you want to delete this taxpayer?</h1>
+
+<div>
+
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Taxpayer.FirstName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Taxpayer.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Taxpayer.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Taxpayer.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Taxpayer.SSN)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Taxpayer.SsnHidden)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Taxpayer.PIN)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Taxpayer.PIN)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Taxpayer.StartDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Taxpayer.StartDate)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Taxpayer.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

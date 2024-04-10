@@ -1,11 +1,15 @@
 ﻿using FluentValidation;
 
-namespace ValidateBirthDateApp.LanguageExtensions;
+namespace TaxpayerValidation.LanguageExtensions;
 
 
 public static class RuleBuilderExtensions
 {
-
+    /// <summary>
+    /// Custom rule for a date
+    /// </summary>
+    /// <typeparam name="T">Model</typeparam>
+    /// <param name="ruleBuilder">Build from caller</param>
     public static IRuleBuilderOptions<T, DateOnly> BirthDateRule<T>(this IRuleBuilder<T, DateOnly> ruleBuilder)
     {
 
@@ -17,5 +21,15 @@ public static class RuleBuilderExtensions
                          $" must be greater than {minYear} " +
                          $"year and less than or equal to {DateTime.Now.Year} ");
     }
+
+
+    public static IRuleBuilderOptions<T, string> SsnRule<T>(this IRuleBuilder<T, string> ruleBuilder)
+    {
+        return ruleBuilder
+            .Must(x => x.IsSocialSecurityNumberValid())
+            .WithMessage("'{PropertyName}'" +
+                         $" is invalid");
+    }
+
 
 }
