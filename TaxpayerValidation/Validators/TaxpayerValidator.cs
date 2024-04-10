@@ -11,7 +11,6 @@ public class TaxpayerValidator : AbstractValidator<Taxpayer>
         
 
         Include(new FirstLastNameValidator());
-        //RuleFor(x => x.SSN).Must(x => x.Length == 9 && x.IsInteger()).WithMessage("SSN must be 9 digits long");
         
         Transform(
                 from: customer => customer.SSN, 

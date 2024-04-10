@@ -21,9 +21,6 @@ public partial class Context : DbContext
 
     public virtual DbSet<Taxpayer> Taxpayer { get; set; }
 
-    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    //    => optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=FluentValidation1;Integrated Security=True;Encrypt=False", x => x.UseDateOnlyTimeOnly());
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new Configurations.TaxpayerConfiguration());
