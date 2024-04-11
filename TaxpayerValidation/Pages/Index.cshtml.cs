@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using TaxpayerValidation.Data;
 using TaxpayerValidation.LanguageExtensions;
 using TaxpayerValidation.Models;
@@ -14,7 +15,7 @@ namespace TaxpayerValidation.Pages
         {
             _context = context;
 
-
+            Log.Information("IndexModel constructor");
         }
 
         public IList<Taxpayer> Taxpayer { get;set; } = default!;

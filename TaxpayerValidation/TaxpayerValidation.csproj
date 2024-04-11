@@ -47,10 +47,11 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="assets\" />
+	  <Folder Include="wwwroot\images\" />
 	</ItemGroup>
 
 	<Target Name="MakeMyDir" AfterTargets="Build">
-		<MakeDir Directories="$(OutDir)LogFiles" />
+		<MakeDir Directories="$(OutDir)Logs" />
 	</Target>
 
 	<Target Name="MakeLogDir" AfterTargets="Build">
