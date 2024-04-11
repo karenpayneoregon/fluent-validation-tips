@@ -1,4 +1,4 @@
-﻿namespace TaxpayerValidation.LanguageExtensions;
+﻿namespace TaxpayerLibrary.LanguageExtensions;
 public static class NumericExtensions
 {
     /// <summary>

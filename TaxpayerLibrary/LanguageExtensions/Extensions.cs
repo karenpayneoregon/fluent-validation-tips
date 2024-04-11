@@ -1,7 +1,7 @@
 ﻿using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace TaxpayerValidation.LanguageExtensions;
+namespace TaxpayerLibrary.LanguageExtensions;
 
 //#pragma warning disable CS8618
 

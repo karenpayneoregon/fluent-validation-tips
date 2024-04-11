@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using FluentValidation;
-using TaxpayerValidation.LanguageExtensions;
+using TaxpayerLibrary.LanguageExtensions;
 
 #pragma warning disable CA2255
 

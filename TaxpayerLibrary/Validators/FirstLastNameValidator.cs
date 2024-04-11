@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using TaxpayerValidation.Models;
+using TaxpayerLibrary.Models;
 
-namespace TaxpayerValidation.Validators;
+namespace TaxpayerLibrary.Validators;
 
 public class FirstLastNameValidator : AbstractValidator<Taxpayer>
 {

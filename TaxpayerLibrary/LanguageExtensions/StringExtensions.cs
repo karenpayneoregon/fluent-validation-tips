@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
 
-namespace TaxpayerValidation.LanguageExtensions;
+namespace TaxpayerLibrary.LanguageExtensions;
 public static partial class StringExtensions
 {
     /// <summary>
@@ -69,11 +69,15 @@ public static partial class StringExtensions
     /// For demonstration only, for a real application use a mask in the database table based on user permissions,
     /// see Others\readme.md
     /// </summary>
+    /// <remarks>
+    /// Best to trash this and in SQL-Server use MASKED WITH (FUNCTION = 'partial(0,"XXX-XX-",4)') for SSN and control
+    /// with user permissions
+    /// </remarks>
     public static string MaskSsn(this string ssn, int digitsToShow = 4, char maskCharacter = 'X')
     {
         if (string.IsNullOrWhiteSpace(ssn)) return string.Empty;
         if (ssn.Contains("-")) ssn = ssn.Replace("-", string.Empty);
-        if (ssn.Length != 9) throw new ArgumentException("SSN invalid length");
+        if (ssn.Length != 9) return ssn;
         if (ssn.IsNotInteger()) throw new ArgumentException("SSN not valid");
 
         const int ssnLength = 9;

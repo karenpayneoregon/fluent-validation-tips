@@ -4,20 +4,22 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using TaxpayerValidation.LanguageExtensions;
-using TaxpayerValidation.Models;
+using TaxpayerLibrary.Data;
+using TaxpayerLibrary.LanguageExtensions;
+using TaxpayerLibrary.Models;
+
 
 namespace TaxpayerValidation.Pages
 {
     public class EditModel : PageModel
     {
-        private readonly Data.Context _context;
+        private readonly Context _context;
         private IValidator<Taxpayer> _validator;
 
         /*
          * Use Dependency Injection to inject the context and the validator into the page model.
          */
-        public EditModel(Data.Context context, IValidator<Taxpayer> validator)
+        public EditModel(Context context, IValidator<Taxpayer> validator)
         {
             _context = context;
             _validator = validator;

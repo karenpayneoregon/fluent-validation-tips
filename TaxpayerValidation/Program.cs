@@ -3,10 +3,10 @@ using EntityCoreFileLogger;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
+using TaxpayerLibrary.Data;
+using TaxpayerLibrary.Models;
+using TaxpayerLibrary.Validators;
 using TaxpayerValidation.Classes;
-using TaxpayerValidation.Data;
-using TaxpayerValidation.Models;
-using TaxpayerValidation.Validators;
 
 namespace TaxpayerValidation;
 public class Program

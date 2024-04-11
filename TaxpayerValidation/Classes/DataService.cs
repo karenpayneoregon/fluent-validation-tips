@@ -1,6 +1,6 @@
 ﻿using Bogus;
 using Bogus.Extensions.UnitedStates;
-using TaxpayerValidation.Models;
+using TaxpayerLibrary.Models;
 
 
 namespace TaxpayerValidation.Classes;

@@ -5,16 +5,17 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using TaxpayerValidation.Data;
-using TaxpayerValidation.Models;
+using TaxpayerLibrary.Data;
+using TaxpayerLibrary.Models;
+
 
 namespace TaxpayerValidation.Pages
 {
     public class DetailsModel : PageModel
     {
-        private readonly TaxpayerValidation.Data.Context _context;
+        private readonly Context _context;
 
-        public DetailsModel(TaxpayerValidation.Data.Context context)
+        public DetailsModel(Context context)
         {
             _context = context;
         }

@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
-using TaxpayerValidation.LanguageExtensions;
-using TaxpayerValidation.Models;
+using TaxpayerLibrary.LanguageExtensions;
+using TaxpayerLibrary.Models;
 
-namespace TaxpayerValidation.Validators;
+namespace TaxpayerLibrary.Validators;
 
 public class TaxpayerValidator : AbstractValidator<Taxpayer>
 {

@@ -1,7 +1,7 @@
 ﻿using CountryValidation;
 using FluentValidation;
 
-namespace TaxpayerValidation.LanguageExtensions;
+namespace TaxpayerLibrary.LanguageExtensions;
 
 
 public static class RuleBuilderExtensions

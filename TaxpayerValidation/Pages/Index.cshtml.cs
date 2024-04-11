@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using TaxpayerValidation.Data;
-using TaxpayerValidation.LanguageExtensions;
-using TaxpayerValidation.Models;
+using TaxpayerLibrary.Data;
+using TaxpayerLibrary.Models;
+
 
 namespace TaxpayerValidation.Pages
 {

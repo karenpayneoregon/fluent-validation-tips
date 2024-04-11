@@ -2,9 +2,9 @@
 #nullable disable
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using TaxpayerValidation.LanguageExtensions;
+using TaxpayerLibrary.LanguageExtensions;
 
-namespace TaxpayerValidation.Models;
+namespace TaxpayerLibrary.Models;
 
 public partial class Taxpayer
 {
