@@ -48,22 +48,32 @@
     <div class="col-auto">
         <span class="fst-italic">* Left SSN exposed for demonstration purposes. *</span>
     </div>
-    
+
 </div>
 <div class="row mt-3">
     <a asp-page="./Index">Back to List</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
     <script type="text/javascript">
-        $('#ssn').keyup(function() {
+        $('#ssn').keyup(function () {
             var val = this.value.replace(/\D/g, '');
             val = val.replace(/^(\d{3})/, '$1-');
             val = val.replace(/-(\d{2})/, '-$1-');
             val = val.replace(/(\d)-(\d{4}).*/, '$1-$2');
             this.value = val;
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            var val = document.getElementById("ssn").value.replace(/\D/g, '');
+            val = val.replace(/^(\d{3})/, '$1-');
+            val = val.replace(/-(\d{2})/, '-$1-');
+            val = val.replace(/(\d)-(\d{4}).*/, '$1-$2');
+            document.getElementById("ssn").value = val;
         });
     </script>
 }

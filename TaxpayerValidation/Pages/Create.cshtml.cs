@@ -14,6 +14,9 @@ namespace TaxpayerValidation.Pages
         private readonly Data.Context _context;
         private IValidator<Taxpayer> _validator;
 
+        /*
+         * Use Dependency Injection to inject the context and the validator into the page model.
+         */
         public CreateModel(Data.Context context, IValidator<Taxpayer> validator)
         {
             _context = context;

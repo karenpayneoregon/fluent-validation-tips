@@ -56,10 +56,14 @@ public static partial class StringExtensions
     /// <remarks>
     /// For simple validation see BaseDataValidatorLibrary.CommonRules.SocialSecurityAttribute
     /// </remarks>
-    public static bool IsSocialSecurityNumberValid(this string ssn) =>
-        !string.IsNullOrWhiteSpace(ssn) &&
-        SocialSecurityPattern()
-            .IsMatch(ssn);
+    public static bool IsSocialSecurityNumberValid(this string ssn)
+    {
+        if(string.IsNullOrWhiteSpace(ssn)) return false;
+
+        return !string.IsNullOrWhiteSpace(ssn) &&
+               SocialSecurityPattern()
+                   .IsMatch(ssn);
+    }
 
     /// <summary>
     /// For demonstration only, for a real application use a mask in the database table based on user permissions,

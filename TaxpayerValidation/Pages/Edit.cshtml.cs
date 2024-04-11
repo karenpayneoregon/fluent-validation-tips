@@ -1,6 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation;
+using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
+using TaxpayerValidation.LanguageExtensions;
 using TaxpayerValidation.Models;
 
 namespace TaxpayerValidation.Pages
@@ -8,10 +12,15 @@ namespace TaxpayerValidation.Pages
     public class EditModel : PageModel
     {
         private readonly Data.Context _context;
+        private IValidator<Taxpayer> _validator;
 
-        public EditModel(Data.Context context)
+        /*
+         * Use Dependency Injection to inject the context and the validator into the page model.
+         */
+        public EditModel(Data.Context context, IValidator<Taxpayer> validator)
         {
             _context = context;
+            _validator = validator;
         }
 
         [BindProperty]
@@ -19,6 +28,7 @@ namespace TaxpayerValidation.Pages
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+
             if (id == null)
             {
                 return NotFound();
@@ -29,35 +39,47 @@ namespace TaxpayerValidation.Pages
             {
                 return NotFound();
             }
+
             Taxpayer = taxpayer;
             return Page();
         }
 
-        // To protect from over posting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            
+            // Validate the model
+            ValidationResult result = await _validator.ValidateAsync(Taxpayer);
+
+            // If the model is not valid, add the errors to the model state
+            if (!result.IsValid)
             {
+
+                result.AddToModelState(ModelState);
                 return Page();
+
             }
 
+            /*
+             * The DbContext does not know the state of the entity, so we need to attach it
+             * and mark its state to Modified.
+             */
             _context.Attach(Taxpayer).State = EntityState.Modified;
 
             try
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateConcurrencyException dce)
             {
+                Log.Error(dce, $"Concurrency error when attempting to update a taxpayer with id " +
+                               $"{Taxpayer.Id}");
+
                 if (!TaxpayerExists(Taxpayer.Id))
                 {
                     return NotFound();
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
             }
 
             return RedirectToPage("./Index");
