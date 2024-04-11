@@ -2,10 +2,15 @@
 using Bogus.Extensions.UnitedStates;
 using TaxpayerValidation.Models;
 
+
 namespace TaxpayerValidation.Classes;
 
 public class DataService
 {
+    /// <summary>
+    /// These are SSN that will validate against an SSN regex validator
+    /// </summary>
+    /// <returns>One SSN</returns>
     private static string GetRandomSocialSecurityNumber()
     {
         string[] list =
