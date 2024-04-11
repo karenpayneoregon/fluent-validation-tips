@@ -24,8 +24,8 @@
                 <span asp-validation-for="Taxpayer.LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Taxpayer.SSN" class="control-label"></label>
-                <input asp-for="Taxpayer.SSN" class="form-control" type="password" />
+                <label asp-for="Taxpayer.SSN" class="control-label" for="ssn"></label>
+                <input asp-for="Taxpayer.SSN" class="form-control" id="ssn" />
                 <span asp-validation-for="Taxpayer.SSN" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -50,5 +50,17 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script type="text/javascript">
+        $('#ssn').keyup(function () {
+            var val = this.value.replace(/\D/g, '');
+            val = val.replace(/^(\d{3})/, '$1-');
+            val = val.replace(/-(\d{2})/, '-$1-');
+            val = val.replace(/(\d)-(\d{4}).*/, '$1-$2');
+            this.value = val;
+        });
+    </script>
 }

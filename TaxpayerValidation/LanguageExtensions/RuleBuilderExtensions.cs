@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using CountryValidation;
+using FluentValidation;
 
 namespace TaxpayerValidation.LanguageExtensions;
 
@@ -25,8 +26,9 @@ public static class RuleBuilderExtensions
 
     public static IRuleBuilderOptions<T, string> SsnRule<T>(this IRuleBuilder<T, string> ruleBuilder)
     {
+        CountryValidator validator = new();
         return ruleBuilder
-            .Must(x => x.IsSocialSecurityNumberValid())
+            .Must(ssn => validator.ValidateNationalIdentityCode(ssn, Country.US).IsValid)
             .WithMessage("'{PropertyName}'" +
                          $" is invalid");
     }

@@ -5,6 +5,14 @@ namespace TaxpayerValidation.LanguageExtensions;
 public static partial class StringExtensions
 {
     /// <summary>
+    /// Strip dashes from a social security number
+    /// </summary>
+    /// <param name="ssn">SSN</param>
+    /// <returns>String void of dashes</returns>
+    public static string BareSocialSecurityNumber(this string ssn) =>
+        ssn.Replace("-", string.Empty);
+
+    /// <summary>
     /// Splits pascal case, so "FooBar" would become "Foo Bar".
     /// </summary>
     /// <remarks>
@@ -49,8 +57,8 @@ public static partial class StringExtensions
     /// For simple validation see BaseDataValidatorLibrary.CommonRules.SocialSecurityAttribute
     /// </remarks>
     public static bool IsSocialSecurityNumberValid(this string ssn) =>
-        !string.IsNullOrWhiteSpace(ssn) && 
-        new Regex(@"^(?!\b(\d)\1+-(\d)\1+-(\d)\1+\b)(?!123-45-6789|219-09-9999|078-05-1120)(?!666|000|9\d{2})\d{3}-(?!00)\d{2}-(?!0{4})\d{4}$")
+        !string.IsNullOrWhiteSpace(ssn) &&
+        SocialSecurityPattern()
             .IsMatch(ssn);
 
     /// <summary>
@@ -88,5 +96,6 @@ public static partial class StringExtensions
 
     }
 
-
+    [GeneratedRegex(@"^(?!\b(\d)\1+-(\d)\1+-(\d)\1+\b)(?!123-45-6789|219-09-9999|078-05-1120)(?!666|000|9\d{2})\d{3}-(?!00)\d{2}-(?!0{4})\d{4}$")]
+    private static partial Regex SocialSecurityPattern();
 }

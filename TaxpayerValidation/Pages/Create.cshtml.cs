@@ -3,6 +3,7 @@ using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Serilog;
+using TaxpayerValidation.Classes;
 using TaxpayerValidation.LanguageExtensions;
 using TaxpayerValidation.Models;
 
@@ -18,11 +19,14 @@ namespace TaxpayerValidation.Pages
             _context = context;
             _validator = validator;
             Log.Information("Done in create page constructor");
+
         }
 
         public IActionResult OnGet()
         {
-            Taxpayer.StartDate = DateOnly.FromDateTime(DateTime.Now);
+
+            Taxpayer = DataService.BogusTaxpayer();
+
             return Page();
         }
 

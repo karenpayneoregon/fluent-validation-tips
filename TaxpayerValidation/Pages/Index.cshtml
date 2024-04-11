@@ -6,13 +6,27 @@
     ViewData["Title"] = "Index";
 }
 
+<style>
+
+    .tbodyDiv {
+        max-height: clamp(8em,100vh,450px);
+        overflow: auto;
+    }
+
+    .table tbody tr.highlight td {
+        background-color: yellow;
+    }
+</style>
+
 <h1>Index</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
+
+<div class="overflow-auto" style="min-height:200px;max-height:550px">
+    <table class="table table-bordered text-start table-striped" data-toggle="table">
+        <thead class="sticky-top table-primary">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Taxpayer[0].FirstName)
@@ -29,33 +43,35 @@
             <th>
                 @Html.DisplayNameFor(model => model.Taxpayer[0].StartDate)
             </th>
-            <th></th>
+            <th>Actions</th>
         </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Taxpayer) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SsnHidden)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PIN)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.Taxpayer) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SsnHidden)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PIN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+</div>
