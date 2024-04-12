@@ -46,7 +46,7 @@
 		<PackageReference Include="SeriLogThemesLibrary" Version="1.0.0.1" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="assets\" />
+	  <Folder Include="assets\GitHistory\images\" />
 	  <Folder Include="wwwroot\images\" />
 	</ItemGroup>
 	<ItemGroup>
