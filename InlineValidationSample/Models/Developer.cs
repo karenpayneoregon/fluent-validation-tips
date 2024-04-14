@@ -2,5 +2,8 @@
 
 public class Developer : Person
 {
-    // TODO: Add developer specific properties
+    /// <summary>
+    /// Type of developer
+    /// </summary>
+    public string Type { get; set; }
 }

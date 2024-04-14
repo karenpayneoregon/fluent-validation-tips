@@ -1,7 +1,6 @@
 ﻿using FluentValidation;
 using InlineValidationSample.Classes;
 using InlineValidationSample.LanguageExtensions;
-using InlineValidationSample.Models;
 
 namespace InlineValidationSample.Validators;
 

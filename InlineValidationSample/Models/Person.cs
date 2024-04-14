@@ -5,6 +5,9 @@ using static InlineValidationSample.Classes.ValidationHelpers;
 
 namespace InlineValidationSample.Models;
 
+/// <summary>
+/// Example of a FluentValidation inline validator
+/// </summary>
 public class Person : IHuman
 {
     public int Id { get; set; }

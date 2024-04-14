@@ -4,6 +4,10 @@
     "Miss",
     "Mrs."
   ],
+  "DeveloperTypes": [
+    "C#",
+    "F#"
+  ],
   "ContactTypes": [
     "Accounting Manager.",
     "Assistant Sales Agent",

@@ -1,6 +1,4 @@
 ﻿
-using InlineValidationSample.Models;
-
 namespace InlineValidationSample.Interfaces;
 public interface IHuman
 {

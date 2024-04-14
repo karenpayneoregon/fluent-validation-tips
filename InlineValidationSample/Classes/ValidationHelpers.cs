@@ -9,5 +9,9 @@ internal static class ValidationHelpers
 
     public static string[] Titles => _container.Titles.ToArray();
     public static string[] ContactTypes = _container.ContactTypes.ToArray();
+    /// <summary>
+    /// <see cref="Developer"/> types
+    /// </summary>
+    public static string[] DeveloperTypes = _container.DeveloperTypes.ToArray();
     
 }
