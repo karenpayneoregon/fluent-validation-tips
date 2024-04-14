@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using InlineValidationSample.Classes;
 using InlineValidationSample.Interfaces;
 using InlineValidationSample.LanguageExtensions;
+using static InlineValidationSample.Classes.ValidationHelpers;
 
 namespace InlineValidationSample.Models;
 
@@ -17,7 +17,7 @@ public class Person : IHuman
     public static readonly InlineValidator<Person> Validator = new()
         {
             v => v.RuleFor(x => x.Title)
-                .In(ValidationHelpers.Titles),
+                .In(Titles),
             v => v.RuleFor(x => x.FirstName)
                 .NotEmpty()
                 .WithMessage("{PropertyName} is required"),
