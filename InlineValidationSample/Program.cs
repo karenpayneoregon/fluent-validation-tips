@@ -1,7 +1,4 @@
-﻿using System.Text.Json;
-using FluentValidation;
-using InlineValidationSample.Classes;
-using InlineValidationSample.Models;
+﻿using InlineValidationSample.Models;
 
 namespace InlineValidationSample;
 
@@ -11,7 +8,10 @@ internal partial class Program
     {
         Person person = new()
         {
-            FirstName = "Jane", LastName = "Adams", Gender = Gender.Female, Title = "Miss"
+            //FirstName = "Jane", 
+            LastName = "Adams", 
+            //Gender = Gender.Female, 
+            //Title = "Miss"
         };
 
         var validator = Person.Validator.Validate(person);
@@ -24,7 +24,7 @@ internal partial class Program
         }
         else
         {
-            Console.WriteLine("Valid");
+            Console.WriteLine("Valid person");
         }
 
         Console.ReadLine();
