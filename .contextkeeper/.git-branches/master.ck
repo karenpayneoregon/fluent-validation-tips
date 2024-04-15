@@ -15,9 +15,9 @@
         {
           "Documents": [
             {
-              "FilePath": "C:\\OED\\DotnetLand\\VS2022\\FluentValidationTips\\InlineValidationSample\\LanguageExtensions\\ValidatorExtensions.cs",
-              "RelativePath": "..\\..\\InlineValidationSample\\LanguageExtensions\\ValidatorExtensions.cs",
-              "FullName": "ValidatorExtensions.cs",
+              "FilePath": "C:\\OED\\DotnetLand\\VS2022\\FluentValidationTips\\InlineValidationSample\\Interfaces\\IHuman.cs",
+              "RelativePath": "..\\..\\InlineValidationSample\\Interfaces\\IHuman.cs",
+              "FullName": "IHuman.cs",
               "DockedHeight": {
                 "UnitType": "Stretch",
                 "Value": 162
@@ -26,49 +26,8 @@
                 "UnitType": "Stretch",
                 "Value": 200
               },
-              "Line": 12,
-              "Column": 45,
-              "IsPinned": false
-            },
-            {
-              "FilePath": "C:\\OED\\DotnetLand\\VS2022\\FluentValidationTips\\InlineValidationSample\\Program.cs",
-              "RelativePath": "..\\..\\InlineValidationSample\\Program.cs",
-              "FullName": "Program.cs",
-              "DockedHeight": {
-                "UnitType": "Stretch",
-                "Value": 162
-              },
-              "DockedWidth": {
-                "UnitType": "Stretch",
-                "Value": 200
-              },
-              "Line": 48,
-              "Column": 106,
-              "Breakpoints": [
-                {
-                  "IsEnabled": true,
-                  "Line": 50,
-                  "Condition": "",
-                  "ConditionType": "WhenTrue"
-                }
-              ],
-              "IsPinned": false,
-              "IsSelected": true
-            },
-            {
-              "FilePath": "C:\\OED\\DotnetLand\\VS2022\\FluentValidationTips\\TaxpayerLibrary\\Validators\\TaxpayerValidator.cs",
-              "RelativePath": "..\\..\\TaxpayerLibrary\\Validators\\TaxpayerValidator.cs",
-              "FullName": "TaxpayerValidator.cs",
-              "DockedHeight": {
-                "UnitType": "Stretch",
-                "Value": 162
-              },
-              "DockedWidth": {
-                "UnitType": "Stretch",
-                "Value": 200
-              },
-              "Line": 13,
-              "Column": 26,
+              "Line": 14,
+              "Column": 15,
               "IsPinned": false
             },
             {
@@ -83,14 +42,14 @@
                 "UnitType": "Stretch",
                 "Value": 200
               },
-              "Line": 6,
-              "Column": 63,
+              "Line": 22,
+              "Column": 33,
               "IsPinned": false
             },
             {
-              "FilePath": "C:\\OED\\DotnetLand\\VS2022\\FluentValidationTips\\InlineValidationSample\\Models\\Person.cs",
-              "RelativePath": "..\\..\\InlineValidationSample\\Models\\Person.cs",
-              "FullName": "Person.cs",
+              "FilePath": "C:\\OED\\DotnetLand\\VS2022\\FluentValidationTips\\InlineValidationSample\\Models\\Employee.cs",
+              "RelativePath": "..\\..\\InlineValidationSample\\Models\\Employee.cs",
+              "FullName": "Employee.cs",
               "DockedHeight": {
                 "UnitType": "Stretch",
                 "Value": 162
@@ -99,30 +58,14 @@
                 "UnitType": "Stretch",
                 "Value": 200
               },
-              "Line": 18,
-              "Column": 1,
-              "IsPinned": false
-            },
-            {
-              "FilePath": "C:\\OED\\DotnetLand\\VS2022\\FluentValidationTips\\InlineValidationSample\\Models\\Gender.cs",
-              "RelativePath": "..\\..\\InlineValidationSample\\Models\\Gender.cs",
-              "FullName": "Gender.cs",
-              "DockedHeight": {
-                "UnitType": "Stretch",
-                "Value": 162
-              },
-              "DockedWidth": {
-                "UnitType": "Stretch",
-                "Value": 200
-              },
-              "Line": 4,
+              "Line": 8,
               "Column": 2,
               "IsPinned": false
             },
             {
-              "FilePath": "C:\\OED\\DotnetLand\\VS2022\\FluentValidationTips\\InlineValidationSample\\Interfaces\\IHuman.cs",
-              "RelativePath": "..\\..\\InlineValidationSample\\Interfaces\\IHuman.cs",
-              "FullName": "IHuman.cs",
+              "FilePath": "C:\\OED\\DotnetLand\\VS2022\\FluentValidationTips\\InlineValidationSample\\Program.cs",
+              "RelativePath": "..\\..\\InlineValidationSample\\Program.cs",
+              "FullName": "Program.cs",
               "DockedHeight": {
                 "UnitType": "Stretch",
                 "Value": 162
@@ -131,14 +74,14 @@
                 "UnitType": "Stretch",
                 "Value": 200
               },
-              "Line": 1,
-              "Column": 1,
+              "Line": 15,
+              "Column": 14,
               "IsPinned": false
             },
             {
-              "FilePath": "C:\\OED\\DotnetLand\\VS2022\\FluentValidationTips\\TaxpayerValidation\\TaxpayerValidation.csproj",
-              "RelativePath": "..\\..\\TaxpayerValidation\\TaxpayerValidation.csproj",
-              "FullName": "TaxpayerValidation.csproj",
+              "FilePath": "C:\\OED\\DotnetLand\\VS2022\\FluentValidationTips\\InlineValidationSample\\Validators\\EmployeeValidator.cs",
+              "RelativePath": "..\\..\\InlineValidationSample\\Validators\\EmployeeValidator.cs",
+              "FullName": "EmployeeValidator.cs",
               "DockedHeight": {
                 "UnitType": "Stretch",
                 "Value": 162
@@ -147,14 +90,16 @@
                 "UnitType": "Stretch",
                 "Value": 200
               },
-              "Line": 29,
-              "Column": 52,
-              "IsPinned": false
+              "Line": 24,
+              "Column": 6,
+              "IsPinned": false,
+              "IsActive": true,
+              "IsSelected": true
             },
             {
-              "FilePath": "C:\\OED\\DotnetLand\\VS2022\\FluentValidationTips\\InlineValidationSample\\Validation.json",
-              "RelativePath": "..\\..\\InlineValidationSample\\Validation.json",
-              "FullName": "Validation.json",
+              "FilePath": "C:\\OED\\DotnetLand\\VS2022\\FluentValidationTips\\InlineValidationSample\\Models\\Manager.cs",
+              "RelativePath": "..\\..\\InlineValidationSample\\Models\\Manager.cs",
+              "FullName": "Manager.cs",
               "DockedHeight": {
                 "UnitType": "Stretch",
                 "Value": 162
@@ -163,57 +108,14 @@
                 "UnitType": "Stretch",
                 "Value": 200
               },
-              "Line": 1,
-              "Column": 1,
+              "Line": 7,
+              "Column": 5,
               "IsPinned": false
             }
           ],
           "DockedHeight": {
             "UnitType": "Stretch",
             "Value": 162
-          },
-          "DockedWidth": {
-            "UnitType": "Stretch",
-            "Value": 200
-          }
-        }
-      ],
-      "Orientation": "Horizontal"
-    },
-    {
-      "WindowType": "ExternalWindow",
-      "WindowState": "Maximized",
-      "Window": {
-        "Left": 2559,
-        "Top": -14,
-        "Width": 1921,
-        "Height": 1081
-      },
-      "Docks": [
-        {
-          "Documents": [
-            {
-              "FilePath": "C:\\OED\\DotnetLand\\VS2022\\FluentValidationTips\\InlineValidationSample\\Classes\\ValidationHelpers.cs",
-              "RelativePath": "..\\..\\InlineValidationSample\\Classes\\ValidationHelpers.cs",
-              "FullName": "ValidationHelpers.cs",
-              "DockedHeight": {
-                "UnitType": "Stretch",
-                "Value": 200
-              },
-              "DockedWidth": {
-                "UnitType": "Stretch",
-                "Value": 200
-              },
-              "Line": 6,
-              "Column": 20,
-              "IsPinned": false,
-              "IsActive": true,
-              "IsSelected": true
-            }
-          ],
-          "DockedHeight": {
-            "UnitType": "Stretch",
-            "Value": 200
           },
           "DockedWidth": {
             "UnitType": "Stretch",

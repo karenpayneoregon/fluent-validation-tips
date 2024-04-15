@@ -1,4 +1,5 @@
-﻿using InlineValidationSample.Validators;
+﻿using FluentValidation.Results;
+using InlineValidationSample.Validators;
 using static InlineValidationSample.Classes.SpectreConsoleHelpers;
 
 namespace InlineValidationSample;
@@ -10,9 +11,12 @@ internal partial class Program
         ValidatePersonWithInlineValidator();
         Console.WriteLine();
         ValidateDeveloperWithRegularValidator();
+        Console.WriteLine();
+        ValidateManagerWithEmployeesSample();
 
         Console.ReadLine();
     }
+
 
     /// <summary>
     /// Setup as an invalid <see cref="Person"/> as
@@ -23,7 +27,7 @@ internal partial class Program
 
         PrintCyan();
 
-        Person person = new()
+        Person person = new Person
         {
             //FirstName = "Jane", 
             LastName = "Adams", 
@@ -36,7 +40,7 @@ internal partial class Program
         {
             foreach (var error in validator.Errors)
             {
-                Console.WriteLine(error.ErrorMessage);
+                Console.WriteLine($"   {error.ErrorMessage}");
             }
         }
         else
@@ -54,25 +58,50 @@ internal partial class Program
 
         PrintCyan();
 
-        Developer developer = new()
+        Developer developer = new Developer
         {
             FirstName = "John",
             LastName = "Doe",
             //Type = "C#"
         };
 
-        DeveloperValidator validator = new();
+        DeveloperValidator validator = new DeveloperValidator();
         var validate = validator.Validate(developer);
         if (validate.IsValid == false)
         {
             foreach (var error in validate.Errors)
             {
-                Console.WriteLine(error.ErrorMessage);
+                Console.WriteLine($"   {error.ErrorMessage}");
             }
         }
         else
         {
             Console.WriteLine("Valid developer");
+        }
+    }
+
+    private static void ValidateManagerWithEmployeesSample()
+    {
+
+        PrintCyan();
+
+        var manager = Manager;
+        manager.Employees.FirstOrDefault().FirstName = "";
+
+        ManagerValidator managerValidator = new();
+        var validate = managerValidator.Validate(manager);
+
+        if (validate.IsValid == false)
+        {
+            foreach (ValidationFailure error in validate.Errors)
+            {
+                Console.WriteLine($"   {error.ErrorMessage}");
+
+            }
+        }
+        else
+        {
+            Console.WriteLine("Valid manager");
         }
     }
 }

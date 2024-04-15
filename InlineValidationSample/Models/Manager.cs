@@ -1,6 +1,8 @@
-﻿namespace InlineValidationSample.Models;
+﻿using InlineValidationSample.Interfaces;
 
-public class Manager : Person
+namespace InlineValidationSample.Models;
+
+public class Manager : Person, IEmployee
 {
-    // TODO: Add manager specific properties
+    public List<Employee> Employees { get; set; }
 }

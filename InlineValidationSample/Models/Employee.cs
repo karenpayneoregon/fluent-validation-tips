@@ -1,6 +1,8 @@
-﻿namespace InlineValidationSample.Models;
+﻿using InlineValidationSample.Interfaces;
 
-public class Employee : Person
+namespace InlineValidationSample.Models;
+
+public class Employee : Person, IEmployee
 {
     // TODO: Add employee specific properties
 }
