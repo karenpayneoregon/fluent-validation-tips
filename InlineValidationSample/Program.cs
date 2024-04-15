@@ -87,6 +87,7 @@ internal partial class Program
 
         var manager = Manager;
         manager.Employees.FirstOrDefault().FirstName = "";
+        manager.Employees.FirstOrDefault().Id = 0;
 
         ManagerValidator managerValidator = new();
         var validate = managerValidator.Validate(manager);

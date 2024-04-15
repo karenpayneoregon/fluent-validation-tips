@@ -8,8 +8,3 @@ public interface IHuman
     public DateOnly BirthDate { get; set; }
     public Gender Gender { get; set; }
 }
-
-public interface IEmployee : IHuman
-{
-    public int Id { get; set; }
-}
