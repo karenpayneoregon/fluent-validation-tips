@@ -17,8 +17,6 @@ public static class ValidationHelpers
             .SingleOrDefault(cat =>
                 string.Equals(cat.CategoryName.ToLower(), name.ToLower(), StringComparison.OrdinalIgnoreCase));
 
-
-
         if (categoryItem == null)
         {
             return true;
