@@ -31,7 +31,7 @@ internal partial class Program
         {
             //FirstName = "Jane", 
             LastName = "Adams", 
-            //Gender = Gender.Female, 
+            Gender = Gender.Female, 
             //Title = "Miss"
         };
 
@@ -65,7 +65,7 @@ internal partial class Program
             //Type = "C#"
         };
 
-        DeveloperValidator validator = new DeveloperValidator();
+        DeveloperValidator validator = new();
         var validate = validator.Validate(developer);
         if (validate.IsValid == false)
         {

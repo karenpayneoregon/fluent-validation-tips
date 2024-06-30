@@ -21,8 +21,8 @@ internal partial class Program
                 FirstName = "John",
                 LastName = "Doe",
                 Title = "Owner",
-                Employees = new List<Employee>
-                {
+                Employees =
+                [
                     new()
                     {
                         Id = 1,
@@ -30,6 +30,7 @@ internal partial class Program
                         LastName = "Adams",
                         Title = "Sales Agent"
                     },
+
                     new()
                     {
                         Id = 2,
@@ -37,7 +38,7 @@ internal partial class Program
                         LastName = "Doe",
                         Title = "Marketing Manager"
                     }
-                }
+                ]
             };
 
             return manager;

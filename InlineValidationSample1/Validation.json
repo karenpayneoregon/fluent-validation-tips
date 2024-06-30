@@ -1,0 +1,15 @@
+{
+  "Titles": [
+    "Mr.",
+    "Miss",
+    "Mrs."
+  ],
+  "Genders": [
+    "Male",
+    "Female",
+    "NotSet"
+  ],
+  "Settings": {
+    "MinYear": -120
+  }
+}

@@ -35,7 +35,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxpayerLibrary", "Taxpayer
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InlineValidationSample", "InlineValidationSample\InlineValidationSample.csproj", "{611BC397-326C-4911-9F18-29CE3433E3D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasswordMatchApp", "PasswordMatchApp\PasswordMatchApp.csproj", "{2BF0DEF3-D47C-459C-89C6-B58A9215AD30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PasswordMatchApp", "PasswordMatchApp\PasswordMatchApp.csproj", "{2BF0DEF3-D47C-459C-89C6-B58A9215AD30}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConditionalRulesSample", "ConditionalRulesSample\ConditionalRulesSample.csproj", "{8CEFCEE7-EA98-40FC-AA5E-37C256FAA589}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InlineValidationSample1", "InlineValidationSample1\InlineValidationSample1.csproj", "{42204C1D-0115-4F88-83B5-061BCD9878E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +87,14 @@ Global
 		{2BF0DEF3-D47C-459C-89C6-B58A9215AD30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BF0DEF3-D47C-459C-89C6-B58A9215AD30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BF0DEF3-D47C-459C-89C6-B58A9215AD30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CEFCEE7-EA98-40FC-AA5E-37C256FAA589}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CEFCEE7-EA98-40FC-AA5E-37C256FAA589}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CEFCEE7-EA98-40FC-AA5E-37C256FAA589}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CEFCEE7-EA98-40FC-AA5E-37C256FAA589}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42204C1D-0115-4F88-83B5-061BCD9878E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42204C1D-0115-4F88-83B5-061BCD9878E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42204C1D-0115-4F88-83B5-061BCD9878E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42204C1D-0115-4F88-83B5-061BCD9878E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,6 +110,7 @@ Global
 		{CB640377-649F-49E7-849D-12CB1FB0429B} = {A32F576C-0D1D-4793-A7D8-DB8141B8B466}
 		{611BC397-326C-4911-9F18-29CE3433E3D9} = {CBF623D7-BC83-4B2E-9C80-FD730F4EFAAA}
 		{2BF0DEF3-D47C-459C-89C6-B58A9215AD30} = {CBF623D7-BC83-4B2E-9C80-FD730F4EFAAA}
+		{8CEFCEE7-EA98-40FC-AA5E-37C256FAA589} = {CBF623D7-BC83-4B2E-9C80-FD730F4EFAAA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28789BDB-F02C-4BB5-9FCE-2503BF576263}
