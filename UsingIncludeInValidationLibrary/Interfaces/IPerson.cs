@@ -1,6 +1,6 @@
-﻿using UsingIncludeInValidation.Models;
+﻿using UsingIncludeInValidationLibrary.Models;
 
-namespace UsingIncludeInValidation.Interfaces;
+namespace UsingIncludeInValidationLibrary.Interfaces;
 
 public interface IPerson : IFormattable
 {

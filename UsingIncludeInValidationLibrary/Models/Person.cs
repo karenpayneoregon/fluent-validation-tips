@@ -1,6 +1,6 @@
-﻿using UsingIncludeInValidation.Interfaces;
+﻿using UsingIncludeInValidationLibrary.Interfaces;
 
-namespace UsingIncludeInValidation.Models;
+namespace UsingIncludeInValidationLibrary.Models;
 
 public class Person : IPerson
 {

@@ -1,9 +1,10 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.Configuration;
-using UsingIncludeInValidation.Interfaces;
-using UsingIncludeInValidation.Models;
+using UsingIncludeInValidationLibrary.Interfaces;
+using UsingIncludeInValidationLibrary.Models;
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
 
-namespace UsingIncludeInValidation.Validators;
+namespace UsingIncludeInValidationLibrary.Validators;
 
 public class BirthDateValidator : AbstractValidator<IPerson>
 {

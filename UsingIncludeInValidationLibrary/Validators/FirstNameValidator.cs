@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using UsingIncludeInValidation.Interfaces;
+using UsingIncludeInValidationLibrary.Interfaces;
 
-namespace UsingIncludeInValidation.Validators;
+namespace UsingIncludeInValidationLibrary.Validators;
 
 public class FirstNameValidator : AbstractValidator<IPerson>
 {

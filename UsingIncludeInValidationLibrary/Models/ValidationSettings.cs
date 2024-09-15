@@ -1,4 +1,4 @@
-﻿namespace UsingIncludeInValidation.Models;
+﻿namespace UsingIncludeInValidationLibrary.Models;
 
 public class ValidationSettings
 {

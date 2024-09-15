@@ -1,8 +1,8 @@
-﻿using UsingIncludeInValidation.Interfaces;
-using UsingIncludeInValidation.Models;
+﻿using UsingIncludeInValidationLibrary.Interfaces;
+using UsingIncludeInValidationLibrary.Models;
 
-namespace UsingIncludeInValidation.Classes;
-internal class MockedData
+namespace UsingIncludeInValidationLibrary.Classes;
+public class MockedData
 {
     public static List<IPerson> List()
     {
