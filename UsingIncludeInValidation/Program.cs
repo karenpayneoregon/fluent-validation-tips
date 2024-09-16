@@ -30,7 +30,7 @@ internal partial class Program
                 }
             }
         }
-        
+
         Console.ReadLine();
 
     }
