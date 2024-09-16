@@ -19,14 +19,14 @@ public class MockedData
                     Line1 = "123 Main St",
                     Line2 = "Apt 101",
                     Town = "Any town",
-                    Country = "USA",
+                    Country = "US",
                     Postcode = "12345"
                 }
             },
 
             new Citizen
             {
-                Id = 1,
+                Id = 2,
                 FirstName = "Anne",
                 LastName = "Doe",
                 BirthDate = new DateOnly(1969, 1, 11),
@@ -35,7 +35,22 @@ public class MockedData
                 {
                     Line2 = "Apt 101",
                     Town = "Any town",
-                    Country = "USA"
+                    Country = "CA"
+                }
+            },
+            new Person
+            {
+                Id = 3,
+                FirstName = "John",
+                LastName = "Doe",
+                BirthDate = new DateOnly(1990, 12, 1),
+                Address = new Address
+                {
+                    Line1 = "123 Main St",
+                    Line2 = "Apt 101",
+                    Town = "Any town",
+                    Country = "MG",
+                    Postcode = "12345"
                 }
             }
         ];
