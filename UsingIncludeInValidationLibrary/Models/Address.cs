@@ -1,4 +1,6 @@
-﻿namespace UsingIncludeInValidationLibrary.Models;
+﻿#nullable disable
+
+namespace UsingIncludeInValidationLibrary.Models;
 
 public class Address
 {

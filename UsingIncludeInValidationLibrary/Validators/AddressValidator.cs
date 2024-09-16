@@ -21,6 +21,9 @@ public class AddressValidator : AbstractValidator<IPerson>
         RuleFor(item => item.Address.Postcode).NotNull();
     }
 
+    /// <summary>
+    /// Acceptable country codes for <see cref="Address.Country"/>
+    /// </summary>
     private readonly string[] _countries = ["US", "CA", "MX"];
 
     /// <summary>
