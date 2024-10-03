@@ -4,6 +4,8 @@ Example taken from FluentValidation documentation to demonstrate how to use [inh
 
 Since the example code is incomplete I decided to complete it as this is useful to have.
 
+![Screen](assets/screen.png)
+
 ## Validators
 
 ```csharp
