@@ -3,6 +3,9 @@ using InheritanceValidationApp.Models;
 
 namespace InheritanceValidationApp.Validators;
 
+/// <summary>
+/// Provides validation rules for the <see cref="Organisation"/> model.
+/// </summary>
 public class OrganisationValidator : AbstractValidator<Organisation>
 {
     public OrganisationValidator()

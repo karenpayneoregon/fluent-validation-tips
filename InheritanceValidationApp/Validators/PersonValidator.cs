@@ -2,6 +2,9 @@
 using InheritanceValidationApp.Models;
 
 namespace InheritanceValidationApp.Validators;
+/// <summary>
+/// Provides validation rules for the <see cref="Person"/> model.
+/// </summary>
 public class PersonValidator : AbstractValidator<Person>
 {
     public PersonValidator()
