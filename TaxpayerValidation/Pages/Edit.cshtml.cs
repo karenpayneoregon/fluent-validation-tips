@@ -7,6 +7,7 @@ using Serilog;
 using TaxpayerLibrary.Data;
 using TaxpayerLibrary.LanguageExtensions;
 using TaxpayerLibrary.Models;
+// ReSharper disable PreferConcreteValueOverDefault
 
 
 namespace TaxpayerValidation.Pages

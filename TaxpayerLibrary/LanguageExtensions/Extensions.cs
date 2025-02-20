@@ -6,7 +6,8 @@ namespace TaxpayerLibrary.LanguageExtensions;
 //#pragma warning disable CS8618
 
 /// <summary>
-/// Provides an extension to set up view for validation errors
+/// Provides extension methods for handling validation results and model state in ASP.NET Core
+/// applications.
 /// </summary>
 public static class Extensions
 {

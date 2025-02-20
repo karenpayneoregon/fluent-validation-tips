@@ -48,6 +48,7 @@ public static partial class StringExtensions
 
         return retVal.ToString().Trim();
     }
+
     /// <summary>
     /// Extreme validation for social security number
     /// </summary>
