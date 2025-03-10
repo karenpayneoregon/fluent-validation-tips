@@ -27,14 +27,27 @@ public class Program
         // Setup EF Core - note that the sql will be outputted to the console window 
         // and a text file, one per day under the project folder while for production
         // the log file would go where it should.
-        builder.Services.AddDbContextPool<Context>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
-                .EnableSensitiveDataLogging()
-                .LogTo(new DbContextToFileLogger().Log, new[]
-                    {
-                        DbLoggerCategory.Database.Command.Name
-                    },
-                    LogLevel.Information));
+        if (builder.Environment.IsDevelopment())
+        {
+
+            builder.Services.AddDbContextPool<Context>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+                    .EnableSensitiveDataLogging()
+                    .LogTo(new DbContextToFileLogger().Log, [
+                            DbLoggerCategory.Database.Command.Name
+                        ],
+                        LogLevel.Information));
+        }
+        else
+        {
+            builder.Services.AddDbContextPool<Context>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+                    .LogTo(new DbContextToFileLogger().Log, [
+                            DbLoggerCategory.Database.Command.Name
+                        ],
+                        LogLevel.Information));
+        }
+
 
         var app = builder.Build();
 
