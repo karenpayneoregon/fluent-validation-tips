@@ -24,9 +24,51 @@ public class Program
         // setup logging
         SetupLogging.Development();
 
-        // Setup EF Core - note that the sql will be outputted to the console window 
-        // and a text file, one per day under the project folder while for production
-        // the log file would go where it should.
+
+        RegisterDbContextServices(builder);
+
+
+        var app = builder.Build();
+
+        if (!app.Environment.IsDevelopment())
+        {
+            app.UseExceptionHandler("/Error");
+            app.UseHsts();
+        }
+
+
+        app.UseHttpsRedirection();
+        app.UseStaticFiles();
+
+        app.UseRouting();
+
+        app.UseAuthorization();
+
+        app.MapRazorPages();
+
+        app.Run();
+    }
+
+    /// <summary>
+    /// Configures and registers the Entity Framework Core DbContext services for the application.
+    /// </summary>
+    /// <param name="builder">
+    /// The <see cref="WebApplicationBuilder"/> used to configure the application's services and environment.
+    /// </param>
+    /// <remarks>
+    /// This method sets up the DbContext services differently based on the application's environment:
+    /// <list type="bullet">
+    /// <item>
+    /// <description>In development mode, it enables sensitive data logging for debugging purposes.</description>
+    /// </item>
+    /// <item>
+    /// <description>In non-development environments, sensitive data logging is disabled for security reasons.</description>
+    /// </item>
+    /// </list>
+    /// The database connection string is retrieved from the application's configuration.
+    /// </remarks>
+    private static void RegisterDbContextServices(WebApplicationBuilder builder)
+    {
         if (builder.Environment.IsDevelopment())
         {
 
@@ -47,25 +89,5 @@ public class Program
                         ],
                         LogLevel.Information));
         }
-
-
-        var app = builder.Build();
-
-        if (!app.Environment.IsDevelopment())
-        {
-            app.UseExceptionHandler("/Error");
-            app.UseHsts();
-        }
-
-        app.UseHttpsRedirection();
-        app.UseStaticFiles();
-
-        app.UseRouting();
-
-        app.UseAuthorization();
-
-        app.MapRazorPages();
-
-        app.Run();
     }
 }

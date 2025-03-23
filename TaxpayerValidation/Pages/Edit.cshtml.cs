@@ -12,19 +12,10 @@ using TaxpayerLibrary.Models;
 
 namespace TaxpayerValidation.Pages
 {
-    public class EditModel : PageModel
+    public class EditModel(Context context, IValidator<Taxpayer> validator) : PageModel
     {
-        private readonly Context _context;
-        private IValidator<Taxpayer> _validator;
-
-        /*
-         * Use Dependency Injection to inject the context and the validator into the page model.
-         */
-        public EditModel(Context context, IValidator<Taxpayer> validator)
-        {
-            _context = context;
-            _validator = validator;
-        }
+        private readonly Context _context = context;
+        private IValidator<Taxpayer> _validator = validator;
 
         [BindProperty]
         public Taxpayer Taxpayer { get; set; } = default!;
