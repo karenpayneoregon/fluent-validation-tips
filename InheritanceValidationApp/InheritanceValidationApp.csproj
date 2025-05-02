@@ -16,9 +16,9 @@
 	  <Content Include="readme.md" />
 	</ItemGroup>
 
-	<ItemGroup>
+	<!--<ItemGroup>
 		<PackageReference Include="ConfigurationLibrary" Version="1.0.4" />
-	</ItemGroup>
+	</ItemGroup>-->
 
 	<ItemGroup>
 		<PackageReference Include="ConsoleHelperLibrary" Version="1.0.0" />
