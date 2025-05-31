@@ -9,5 +9,11 @@ internal partial class Program
     {
         Console.Title = "FluentValidation IncludeRuleSets Code sample";
         WindowUtility.SetConsoleWindowPosition(WindowUtility.AnchorWindow.Center);
+
+        AnsiConsole.Write(new FigletText("FluentValidation IncludeRuleSets")
+                .LeftJustified()
+                .Color(Color.Pink1));
+
+        AnsiConsole.Write(new Rule());
     }
 }
