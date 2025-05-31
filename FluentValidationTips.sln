@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadValidatorApp", "LoadVal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfirmPasswordApp", "ConfirmPasswordApp\ConfirmPasswordApp.csproj", "{A18BE1EA-ADA1-4248-8BE0-EB0772A4FD11}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IncludeRuleSetsApp", "IncludeRuleSetsApp\IncludeRuleSetsApp.csproj", "{78ADF544-0560-4597-93E5-CC1CE1767C81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -131,6 +133,10 @@ Global
 		{A18BE1EA-ADA1-4248-8BE0-EB0772A4FD11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A18BE1EA-ADA1-4248-8BE0-EB0772A4FD11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A18BE1EA-ADA1-4248-8BE0-EB0772A4FD11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78ADF544-0560-4597-93E5-CC1CE1767C81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78ADF544-0560-4597-93E5-CC1CE1767C81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78ADF544-0560-4597-93E5-CC1CE1767C81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78ADF544-0560-4597-93E5-CC1CE1767C81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
