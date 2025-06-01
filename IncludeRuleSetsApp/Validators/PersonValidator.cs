@@ -61,9 +61,7 @@ public class PersonValidator : AbstractValidator<Person>
 
         RuleSet("Email", () =>
         {
-            RuleFor(x => x.EmailAddress).NotEmpty()
-                .EmailAddress()
-                .WithMessage("Email address must be a valid email format.");
+            RuleFor(x => x.EmailAddress).NotEmpty().EmailAddress();
         });
     }
 }
