@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using IncludeRuleSetsApp.Classes;
 using IncludeRuleSetsApp.Models;
+using IncludeRuleSetsApp.Validators;
 
 namespace IncludeRuleSetsApp;
 
@@ -43,8 +44,7 @@ internal partial class Program
 
         var validator = new PersonValidator();
 
-        var result = validator.Validate(
-            MockedData.InvalidPerson, options => options.IncludeRuleSets(
+        var result = validator.Validate(MockedData.InvalidPerson, options => options.IncludeRuleSets(
                 "Names",
                 "Identifier",
                 "Birth"));
@@ -58,7 +58,7 @@ internal partial class Program
         {
             foreach (var error in result.Errors)
             {
-                AnsiConsole.MarkupLine($"{error.PropertyName,-10} [red]Error:[/] {error.ErrorMessage}");
+                AnsiConsole.MarkupLine($"{error.PropertyName,-14} [red]Error:[/] {error.ErrorMessage}");
             }
         }
 
@@ -81,8 +81,7 @@ internal partial class Program
         var validator = new PersonValidator();
 
         // Use wildcard to include all rule sets
-        var result = validator.Validate(
-            MockedData.InvalidPerson, options => options.IncludeRuleSets("*"));
+        var result = validator.Validate(MockedData.InvalidPerson, options => options.IncludeRuleSets("*"));
 
         if (result.IsValid)
         {
@@ -92,7 +91,7 @@ internal partial class Program
         {
             foreach (var error in result.Errors)
             {
-                AnsiConsole.MarkupLine($"{error.PropertyName, -10} [red]Error:[/] {error.ErrorMessage}");
+                AnsiConsole.MarkupLine($"{error.PropertyName, -14} [red]Error:[/] {error.ErrorMessage}");
             }
         }
 

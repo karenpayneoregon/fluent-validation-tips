@@ -1,8 +1,9 @@
 ﻿#nullable disable
 using FluentValidation;
 using IncludeRuleSetsApp.LanguageExtensions;
+using IncludeRuleSetsApp.Models;
 
-namespace IncludeRuleSetsApp.Models;
+namespace IncludeRuleSetsApp.Validators;
 
 /// <summary>
 /// Provides validation rules for the <see cref="Person"/> model.
@@ -56,6 +57,13 @@ public class PersonValidator : AbstractValidator<Person>
         RuleSet("Birth", () =>
         {
             RuleFor(x => x.BirthDate).BirthDateRule();
+        });
+
+        RuleSet("Email", () =>
+        {
+            RuleFor(x => x.EmailAddress).NotEmpty()
+                .EmailAddress()
+                .WithMessage("Email address must be a valid email format.");
         });
     }
 }
