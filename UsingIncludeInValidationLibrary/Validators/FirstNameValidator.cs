@@ -12,3 +12,10 @@ public class FirstNameValidator : AbstractValidator<IPerson>
             .MinimumLength(3);
     }
 }
+public class IdentifierValidator : AbstractValidator<IPerson>
+{
+    public IdentifierValidator()
+    {
+        RuleFor(person => person.Id).NotEqual(0);
+    }
+}

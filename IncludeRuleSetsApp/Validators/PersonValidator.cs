@@ -1,5 +1,6 @@
 ﻿#nullable disable
 using FluentValidation;
+using IncludeRuleSetsApp.Interfaces;
 using IncludeRuleSetsApp.LanguageExtensions;
 using IncludeRuleSetsApp.Models;
 
@@ -22,7 +23,7 @@ namespace IncludeRuleSetsApp.Validators;
 /// </item>
 /// </list>
 /// </remarks>
-public class PersonValidator : AbstractValidator<Person>
+public class PersonValidator : AbstractValidator<IPerson>
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="PersonValidator"/> class.

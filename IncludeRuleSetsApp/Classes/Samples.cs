@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using FluentValidation;
 using IncludeRuleSetsApp.Models;
 using IncludeRuleSetsApp.Validators;
+using ValidationResult = FluentValidation.Results.ValidationResult;
 
 namespace IncludeRuleSetsApp.Classes;
 internal class Samples
@@ -37,7 +38,7 @@ internal class Samples
 
         var validator = new PersonValidator();
 
-        var result = validator.Validate(MockedData.InvalidPerson, options => options.IncludeRuleSets(
+        ValidationResult result = validator.Validate(MockedData.InvalidPerson, options => options.IncludeRuleSets(
             "Names",
             "Identifier",
             "Birth"));
@@ -74,7 +75,9 @@ internal class Samples
         var validator = new PersonValidator();
 
         // Use wildcard to include all rule sets
-        var result = validator.Validate(MockedData.InvalidPerson, options => options.IncludeRuleSets("*"));
+
+        var result = validator.Validate(
+            MockedData.InvalidPerson, options => options.IncludeRuleSets("*"));
 
         if (result.IsValid)
         {
