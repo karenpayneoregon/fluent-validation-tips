@@ -18,7 +18,11 @@ public class Program
         // Add services to the container.
         builder.Services.AddRazorPages();
 
-        builder.Services.AddScoped<IValidator<Person>, PersonValidator>();
+        // Add FluentValidation services
+        builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
+        // Alternatively, you can register a specific validator
+        //builder.Services.AddSingleton<IValidator<Person>, PersonValidator>();
+
         builder.Services.AddFluentValidationAutoValidation();
 
         // colorize output
