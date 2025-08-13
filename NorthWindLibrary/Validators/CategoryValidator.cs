@@ -9,7 +9,7 @@ public class CategoryValidator : AbstractValidator<Categories>
     public CategoryValidator()
     {
         RuleFor(category => category.CategoryName)
-            .Must((cat, x) => 
+            .Must((cat, _) => 
                 ValidationHelpers.UniqueName(cat, cat.CategoryName));
     }
 }

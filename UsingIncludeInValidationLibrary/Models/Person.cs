@@ -1,4 +1,6 @@
 ﻿using UsingIncludeInValidationLibrary.Interfaces;
+#pragma warning disable CS8769 // Nullability of reference types in type of parameter doesn't match implemented member (possibly because of nullability attributes).
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 
 namespace UsingIncludeInValidationLibrary.Models;
 
