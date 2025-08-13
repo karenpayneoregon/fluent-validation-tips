@@ -23,63 +23,29 @@ public class Person : IHuman, INotifyPropertyChanged
 
     public int Id
     {
-        get => _id;
-        set
-        {
-            if (value == _id) return;
-            _id = value;
-            OnPropertyChanged();
-        }
+        get; set => SetField(ref field, value);
+  
     }
     public string FirstName
     {
-        get => _firstName;
-        set
-        {
-            if (value == _firstName) return;
-            _firstName = value;
-            OnPropertyChanged();
-        }
+        get; set => SetField(ref field, value);
     }
     public string LastName
     {
-        get => _lastName;
-        set
-        {
-            if (value == _lastName) return;
-            _lastName = value;
-            OnPropertyChanged();
-        }
+        get; set => SetField(ref field, value);
     }
     public string Title
     {
-        get => _title;
-        set
-        {
-            if (value == _title) return;
-            _title = value;
-            OnPropertyChanged();
-        }
+        get; set => SetField(ref field, value);
     }
     public DateOnly BirthDate
     {
-        get => _birthDate;
-        set
-        {
-            if (value.Equals(_birthDate)) return;
-            _birthDate = value;
-            OnPropertyChanged();
-        }
+        get; set => SetField(ref field, value);
     }
     public Gender Gender
     {
-        get => _gender;
-        set
-        {
-            if (value == _gender) return;
-            _gender = value;
-            OnPropertyChanged();
-        }
+        get; set => SetField(ref field, value);
+
     }
 
     #endregion
@@ -110,13 +76,24 @@ public class Person : IHuman, INotifyPropertyChanged
         };
 
 
-
     public event PropertyChangedEventHandler PropertyChanged;
 
-    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    protected void OnPropertyChanged(string propertyName)
+        => PropertyChanged?.Invoke(this, new(propertyName));
+
+    /// <summary>
+    /// Sets the field to the specified value and raises the <see cref="PropertyChanged"/> event if the value has changed.
+    /// </summary>
+    /// <typeparam name="T">The type of the field.</typeparam>
+    /// <param name="field">The field to set.</param>
+    /// <param name="value">The value to set the field to.</param>
+    /// <param name="propertyName">The name of the property. This is optional and will be automatically provided by the compiler.</param>
+    /// <returns><c>true</c> if the field was changed; otherwise, <c>false</c>.</returns>
+    protected bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = "")
     {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        if (EqualityComparer<T>.Default.Equals(field, value)) return false;
+        field = value;
+        OnPropertyChanged(propertyName);
+        return true;
     }
-
-
 }
