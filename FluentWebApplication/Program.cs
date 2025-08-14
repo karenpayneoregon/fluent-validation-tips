@@ -32,18 +32,20 @@ public class Program
         builder.Services.AddFluentValidationAutoValidation();
 
 
-        Log.Logger = new LoggerConfiguration()
-            .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
-            .MinimumLevel.Override("System", LogEventLevel.Warning)
-            .MinimumLevel.Information()
-            .WriteTo.File(
-                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LogFiles",
-                    $"{Now.Year}-{Now.Month:d2}-{Now.Day:d2}", "Log.txt"),
-                rollingInterval: RollingInterval.Infinite,
-                outputTemplate: "[{Timestamp:yyyy-MM-dd HH:mm:ss.fff} [{Level}] {Message}{NewLine}{Exception}")
-            .CreateLogger();
+        builder.Host.UseSerilog((context, configuration) =>
+        {
 
-        builder.Host.UseSerilog();
+            configuration.WriteTo.File(
+                Path.Combine(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LogFiles"), 
+                    $"{Now.Year}-{Now.Month:D2}-{Now.Day:D2}", "Log.txt"),
+                rollingInterval: RollingInterval.Infinite,
+                outputTemplate: "[{Timestamp:yyyy-MM-dd HH:mm:ss.fff} [{Level}] {Message}{NewLine}{Exception}");
+
+            configuration.MinimumLevel.Information();
+            configuration.MinimumLevel.Override("Microsoft", LogEventLevel.Warning);
+            configuration.MinimumLevel.Override("System", LogEventLevel.Warning);
+
+        });
 
         builder.Services.AddDbContextPool<Context>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
