@@ -7,13 +7,14 @@ using TaxpayerLibrary.Data;
 using TaxpayerLibrary.Models;
 using TaxpayerLibrary.Validators;
 using TaxpayerValidation.Classes;
+#pragma warning disable ASP0000
 
 namespace TaxpayerValidation;
 public class Program
 {
     public static void Main(string[] args)
     {
-        var builder = WebApplication.CreateBuilder(args);
+        WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
         builder.Services.AddRazorPages();
@@ -21,6 +22,9 @@ public class Program
         builder.Services.AddScoped<IValidator<Taxpayer>, TaxpayerValidator>();
         builder.Services.AddFluentValidationAutoValidation();
         
+        builder.GetRegisteredValidators();
+ 
+
         // setup logging
         SetupLogging.Development();
 

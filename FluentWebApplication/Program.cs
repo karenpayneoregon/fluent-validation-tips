@@ -1,11 +1,14 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using FluentWebApplication.Classes;
 using FluentWebApplication.Data;
-using FluentWebApplication.Models;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using Serilog.Events;
 using Serilog.Sinks.SystemConsole.Themes;
 using System.Diagnostics;
+using System.Reflection;
+using static System.DateTime;
 
 namespace FluentWebApplication;
 
@@ -19,16 +22,28 @@ public class Program
         builder.Services.AddRazorPages();
 
         // Add FluentValidation services
-        builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
+        //builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
+
+        builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         // Alternatively, you can register a specific validator
         //builder.Services.AddSingleton<IValidator<Person>, PersonValidator>();
 
+        // Enable FluentValidation's automatic validation
         builder.Services.AddFluentValidationAutoValidation();
 
-        // colorize output
-        builder.Host.UseSerilog(( _, configuration) =>
-            configuration.WriteTo.Console(theme: AnsiConsoleTheme.Code));
 
+        Log.Logger = new LoggerConfiguration()
+            .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+            .MinimumLevel.Override("System", LogEventLevel.Warning)
+            .MinimumLevel.Information()
+            .WriteTo.File(
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LogFiles",
+                    $"{Now.Year}-{Now.Month:d2}-{Now.Day:d2}", "Log.txt"),
+                rollingInterval: RollingInterval.Infinite,
+                outputTemplate: "[{Timestamp:yyyy-MM-dd HH:mm:ss.fff} [{Level}] {Message}{NewLine}{Exception}")
+            .CreateLogger();
+
+        builder.Host.UseSerilog();
 
         builder.Services.AddDbContextPool<Context>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
@@ -38,11 +53,11 @@ public class Program
 
         var app = builder.Build();
 
-        // Configure the HTTP request pipeline.
+        FluidUtilities.GetRegisteredValidators(); 
+
         if (!app.Environment.IsDevelopment())
         {
             app.UseExceptionHandler("/Error");
-            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
         }
 
