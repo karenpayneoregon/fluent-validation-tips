@@ -5,7 +5,6 @@ using FluentWebApplication.Data;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using Serilog.Events;
-using Serilog.Sinks.SystemConsole.Themes;
 using System.Diagnostics;
 using System.Reflection;
 using static System.DateTime;
@@ -18,6 +17,8 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
+        DatabaseUtilities.Setup();
+
         // Add services to the container.
         builder.Services.AddRazorPages();
 
@@ -25,8 +26,6 @@ public class Program
         //builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
 
         builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-        // Alternatively, you can register a specific validator
-        //builder.Services.AddSingleton<IValidator<Person>, PersonValidator>();
 
         // Enable FluentValidation's automatic validation
         builder.Services.AddFluentValidationAutoValidation();
@@ -35,9 +34,7 @@ public class Program
         builder.Host.UseSerilog((context, configuration) =>
         {
 
-            configuration.WriteTo.File(
-                Path.Combine(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LogFiles"), 
-                    $"{Now.Year}-{Now.Month:D2}-{Now.Day:D2}", "Log.txt"),
+            configuration.WriteTo.File(Path.Combine(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LogFiles"), $"{Now.Year}-{Now.Month:D2}-{Now.Day:D2}", "Log.txt"),
                 rollingInterval: RollingInterval.Infinite,
                 outputTemplate: "[{Timestamp:yyyy-MM-dd HH:mm:ss.fff} [{Level}] {Message}{NewLine}{Exception}");
 
@@ -74,4 +71,6 @@ public class Program
 
         app.Run();
     }
+
+
 }

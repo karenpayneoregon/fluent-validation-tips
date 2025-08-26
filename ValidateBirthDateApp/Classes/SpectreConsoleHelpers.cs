@@ -21,7 +21,7 @@ public static class SpectreConsoleHelpers
         AnsiConsole.WriteLine();
     }
 
-    public static void PrintMethod([CallerMemberName] string? methodName = null)
+    public static void PrintMethod([CallerMemberName] string methodName = null)
     {
         AnsiConsole.MarkupLine($"[hotpink]Running[/] [cyan]{methodName.SplitPascalCase()}[/]");
     }

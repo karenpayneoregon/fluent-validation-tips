@@ -9,36 +9,35 @@ using TaxpayerLibrary.Data;
 using TaxpayerLibrary.Models;
 
 
-namespace TaxpayerValidation.Pages
+namespace TaxpayerValidation.Pages;
+
+public class DetailsModel : PageModel
 {
-    public class DetailsModel : PageModel
+    private readonly Context _context;
+
+    public DetailsModel(Context context)
     {
-        private readonly Context _context;
+        _context = context;
+    }
 
-        public DetailsModel(Context context)
+    public Taxpayer Taxpayer { get; set; } = null!;
+
+    public async Task<IActionResult> OnGetAsync(int? id)
+    {
+        if (id == null)
         {
-            _context = context;
+            return NotFound();
         }
 
-        public Taxpayer Taxpayer { get; set; } = default!;
-
-        public async Task<IActionResult> OnGetAsync(int? id)
+        var taxpayer = await _context.Taxpayer.FirstOrDefaultAsync(m => m.Id == id);
+        if (taxpayer == null)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var taxpayer = await _context.Taxpayer.FirstOrDefaultAsync(m => m.Id == id);
-            if (taxpayer == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                Taxpayer = taxpayer;
-            }
-            return Page();
+            return NotFound();
         }
+        else
+        {
+            Taxpayer = taxpayer;
+        }
+        return Page();
     }
 }

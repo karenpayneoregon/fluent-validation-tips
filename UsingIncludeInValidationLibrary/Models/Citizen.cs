@@ -1,5 +1,6 @@
 ﻿using UsingIncludeInValidationLibrary.Interfaces;
-
+// ReSharper disable NotNullOrRequiredMemberIsNotInitialized
+#nullable disable
 namespace UsingIncludeInValidationLibrary.Models;
 
 public class Citizen : IPerson

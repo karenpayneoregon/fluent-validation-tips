@@ -1,4 +1,5 @@
-﻿using FluentWebApplication.Classes;
+﻿using ConsoleConfigurationLibrary.Classes;
+using FluentWebApplication.Classes;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using FluentWebApplication.Data;
@@ -13,18 +14,22 @@ public class ListModel : PageModel
 
     public ListModel(Context context)
     {
-        CancellationTokenSource cancellationTokenSource = new(TimeSpan.FromSeconds(1));
         _context = context;
-        var success = context.CanConnectAsync(cancellationTokenSource.Token);
-        
-        if (success == false)
+
+        if (EntitySettings.Instance.CreateNew)
         {
             _context.Database.EnsureDeleted();
             _context.Database.EnsureCreated();
+            Log.Information("Database created");
+        }
+        else
+        {
+            Log.Information("Database not created");
         }
     }
 
-    public IList<Person> Person { get;set; } = default!;
+
+    public IList<Person> Person { get;set; } = null!;
 
     public async Task OnGetAsync()
     {

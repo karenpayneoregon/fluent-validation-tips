@@ -14,12 +14,7 @@ namespace InlineValidationSample1.Models;
 public class Person : IHuman, INotifyPropertyChanged
 {
     #region Properties
-    private int _id;
-    private string _firstName;
-    private string _lastName;
-    private string _title;
-    private DateOnly _birthDate;
-    private Gender _gender;
+
 
     public int Id
     {

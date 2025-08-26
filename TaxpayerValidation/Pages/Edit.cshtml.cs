@@ -10,78 +10,75 @@ using TaxpayerLibrary.Models;
 // ReSharper disable PreferConcreteValueOverDefault
 
 
-namespace TaxpayerValidation.Pages
+namespace TaxpayerValidation.Pages;
+
+public class EditModel(Context context, IValidator<Taxpayer> validator) : PageModel
 {
-    public class EditModel(Context context, IValidator<Taxpayer> validator) : PageModel
+
+    [BindProperty]
+    public Taxpayer Taxpayer { get; set; } = default!;
+
+    public async Task<IActionResult> OnGetAsync(int? id)
     {
-        private readonly Context _context = context;
-        private IValidator<Taxpayer> _validator = validator;
 
-        [BindProperty]
-        public Taxpayer Taxpayer { get; set; } = default!;
-
-        public async Task<IActionResult> OnGetAsync(int? id)
+        if (id == null)
         {
-
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var taxpayer =  await _context.Taxpayer.FirstOrDefaultAsync(m => m.Id == id);
-            if (taxpayer == null)
-            {
-                return NotFound();
-            }
-
-            Taxpayer = taxpayer;
-            return Page();
+            return NotFound();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        var taxpayer =  await context.Taxpayer.FirstOrDefaultAsync(m => m.Id == id);
+        if (taxpayer == null)
         {
+            return NotFound();
+        }
+
+        Taxpayer = taxpayer;
+        return Page();
+    }
+
+    public async Task<IActionResult> OnPostAsync()
+    {
             
-            // Validate the model
-            ValidationResult result = await _validator.ValidateAsync(Taxpayer);
+        // Validate the model
+        ValidationResult result = await validator.ValidateAsync(Taxpayer);
 
-            // If the model is not valid, add the errors to the model state
-            if (!result.IsValid)
-            {
-
-                result.AddToModelState(ModelState);
-                return Page();
-
-            }
-
-            /*
-             * The DbContext does not know the state of the entity, so we need to attach it
-             * and mark its state to Modified.
-             */
-            _context.Attach(Taxpayer).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException dce)
-            {
-                Log.Error(dce, $"Concurrency error when attempting to update a taxpayer with id " +
-                               $"{Taxpayer.Id}");
-
-                if (!TaxpayerExists(Taxpayer.Id))
-                {
-                    return NotFound();
-                }
-
-                throw;
-            }
-
-            return RedirectToPage("./Index");
-        }
-
-        private bool TaxpayerExists(int id)
+        // If the model is not valid, add the errors to the model state
+        if (!result.IsValid)
         {
-            return _context.Taxpayer.Any(e => e.Id == id);
+
+            result.AddToModelState(ModelState);
+            return Page();
+
         }
+
+        /*
+         * The DbContext does not know the state of the entity, so we need to attach it
+         * and mark its state to Modified.
+         */
+        context.Attach(Taxpayer).State = EntityState.Modified;
+
+        try
+        {
+            await context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException dce)
+        {
+            Log.Error(dce, $"Concurrency error when attempting to update a taxpayer with id " +
+                           $"{Taxpayer.Id}");
+
+            if (!TaxpayerExists(Taxpayer.Id))
+            {
+                return NotFound();
+            }
+
+            throw;
+        }
+
+        return RedirectToPage("./Index");
+    }
+
+    private bool TaxpayerExists(int id)
+    {
+        return context.Taxpayer.Any(e => e.Id == id);
     }
 }

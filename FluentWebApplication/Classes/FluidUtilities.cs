@@ -17,7 +17,7 @@ public static class FluidUtilities
     /// </remarks>
     public static void GetRegisteredValidators()
     {
-        List<string> list = new();
+        List<string> list = [];
         var validatorTypes = Assembly.GetExecutingAssembly()
             .GetTypes()
             .Where(t => t is { IsAbstract: false, IsInterface: false })
@@ -26,13 +26,12 @@ public static class FluidUtilities
                           i.GetGenericTypeDefinition() == typeof(IValidator<>)))
             .ToList();
 
-        Console.WriteLine("=== FluentValidation Validators Found by Reflection ===");
+        Log.Information("=== FluentValidation Validators Found by Reflection ===");
         foreach (var type in validatorTypes)
         {
-            Console.WriteLine(type.Name); // or by type.FullName
-            list.Add(type.Name);
+            list.Add(type.Name); // or by type.FullName
         }
-        Console.WriteLine("========================================================");
+        Log.Information("========================================================");
         Log.Information("Validators {P1}", list.ToArray());
     }
 }

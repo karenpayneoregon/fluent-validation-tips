@@ -23,7 +23,7 @@ public class SpectreConsoleHelpers
         AnsiConsole.WriteLine();
     }
 
-    public static void PrintCyan([CallerMemberName] string? methodName = null)
+    public static void PrintCyan([CallerMemberName] string methodName = null)
     {
         AnsiConsole.MarkupLine($"[cyan]{methodName}[/]");
         Console.WriteLine();

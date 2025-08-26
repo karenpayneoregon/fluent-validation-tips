@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using InlineValidationSample1.Classes;
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
 
 namespace InlineValidationSample1.LanguageExtensions;
 

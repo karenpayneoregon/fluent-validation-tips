@@ -1,5 +1,5 @@
-﻿using System.Runtime.CompilerServices;
-using Spectre.Console;
+﻿#nullable enable
+using System.Runtime.CompilerServices;
 
 namespace LoadValidatorApp.Classes;
 

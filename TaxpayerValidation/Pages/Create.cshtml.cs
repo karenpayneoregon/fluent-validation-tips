@@ -9,56 +9,55 @@ using TaxpayerLibrary.Models;
 using TaxpayerValidation.Classes;
 
 
-namespace TaxpayerValidation.Pages
+namespace TaxpayerValidation.Pages;
+
+public class CreateModel : PageModel
 {
-    public class CreateModel : PageModel
+    private readonly Context _context;
+    private IValidator<Taxpayer> _validator;
+
+    /*
+     * Use Dependency Injection to inject the context and the validator into the page model.
+     */
+    public CreateModel(Context context, IValidator<Taxpayer> validator)
     {
-        private readonly Context _context;
-        private IValidator<Taxpayer> _validator;
+        _context = context;
+        _validator = validator;
+        Log.Information("Done in create page constructor");
 
-        /*
-         * Use Dependency Injection to inject the context and the validator into the page model.
-         */
-        public CreateModel(Context context, IValidator<Taxpayer> validator)
-        {
-            _context = context;
-            _validator = validator;
-            Log.Information("Done in create page constructor");
+    }
 
-        }
+    public IActionResult OnGet()
+    {
 
-        public IActionResult OnGet()
-        {
+        Taxpayer = DataService.BogusTaxpayer();
 
-            Taxpayer = DataService.BogusTaxpayer();
+        return Page();
+    }
 
-            return Page();
-        }
+    [BindProperty]
+    public Taxpayer Taxpayer { get; set; } = new Taxpayer();
 
-        [BindProperty]
-        public Taxpayer Taxpayer { get; set; } = new Taxpayer();
-
-        public async Task<IActionResult> OnPostAsync()
-        {
+    public async Task<IActionResult> OnPostAsync()
+    {
             
-            // Validate the model
-            ValidationResult result = await _validator.ValidateAsync(Taxpayer);
+        // Validate the model
+        ValidationResult result = await _validator.ValidateAsync(Taxpayer);
 
-            // If the model is not valid, add the errors to the model state
-            if (!result.IsValid)
-            {
+        // If the model is not valid, add the errors to the model state
+        if (!result.IsValid)
+        {
 
-                result.AddToModelState(ModelState);
-                return Page();
-
-            }
-
-            // The model is valid, add the model to the context and save changes
-            _context.Taxpayer.Add(Taxpayer);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+            result.AddToModelState(ModelState);
+            return Page();
 
         }
+
+        // The model is valid, add the model to the context and save changes
+        _context.Taxpayer.Add(Taxpayer);
+        await _context.SaveChangesAsync();
+
+        return RedirectToPage("./Index");
+
     }
 }

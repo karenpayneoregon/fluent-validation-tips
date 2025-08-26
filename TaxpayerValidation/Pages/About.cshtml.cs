@@ -1,12 +1,10 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace TaxpayerValidation.Pages
+namespace TaxpayerValidation.Pages;
+
+public class AboutModel : PageModel
 {
-    public class AboutModel : PageModel
+    public void OnGet()
     {
-        public void OnGet()
-        {
-        }
     }
 }

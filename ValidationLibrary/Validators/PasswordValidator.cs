@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using ValidationLibrary.Models;
+// ReSharper disable RedundantVerbatimStringPrefix
 
 namespace ValidationLibrary.Validators;
 

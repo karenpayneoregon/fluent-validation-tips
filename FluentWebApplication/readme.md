@@ -2,6 +2,11 @@
 
 Basic `FluentValidation` Razor pages example
 
+## ⚙️ First run
+
+Open appsettings.json and set  `EntityConfiguration.CreateNew` to `true` to create the database and seed it with some data. Run then set `EntityConfiguration.CreateNew` to `false` to use the existing database.
+
+
 # Specifics
 
 - Add a reference to [FluentValidation.AspNetCore](https://www.nuget.org/packages/FluentValidation.AspNetCore)

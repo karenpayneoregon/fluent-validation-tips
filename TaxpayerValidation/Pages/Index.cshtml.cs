@@ -5,24 +5,23 @@ using TaxpayerLibrary.Data;
 using TaxpayerLibrary.Models;
 
 
-namespace TaxpayerValidation.Pages
+namespace TaxpayerValidation.Pages;
+
+public class IndexModel : PageModel
 {
-    public class IndexModel : PageModel
+    private readonly Context _context;
+
+    public IndexModel(Context context)
     {
-        private readonly Context _context;
+        _context = context;
 
-        public IndexModel(Context context)
-        {
-            _context = context;
+        Log.Information("IndexModel constructor");
+    }
 
-            Log.Information("IndexModel constructor");
-        }
+    public IList<Taxpayer> Taxpayer { get; set; } = null!;
 
-        public IList<Taxpayer> Taxpayer { get;set; } = default!;
-
-        public async Task OnGetAsync()
-        {
-            Taxpayer = await _context.Taxpayer.ToListAsync();
-        }
+    public async Task OnGetAsync()
+    {
+        Taxpayer = await _context.Taxpayer.ToListAsync();
     }
 }

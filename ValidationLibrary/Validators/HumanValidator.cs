@@ -1,5 +1,4 @@
-﻿#nullable disable
-using FluentValidation;
+﻿using FluentValidation;
 using ValidationLibrary.LanguageExtensions;
 using ValidationLibrary.Models;
 

@@ -24,7 +24,7 @@ namespace IncludeRuleSetsApp.Classes;
 /// </remarks>
 internal class MockedData
 {
-    public static Person ValidPerson => new Person
+    public static Person ValidPerson => new()
     {
         FirstName = "John",
         LastName = "Doe",
@@ -33,19 +33,19 @@ internal class MockedData
         BirthDate = new DateOnly(2000,1,12)
     };
 
-    public static Person MissingIdPerson => new Person
+    public static Person MissingIdPerson => new()
     {
         FirstName = "John",
         LastName = "Doe",
         PersonId = 0
     };
 
-    public static Person MissingNamesPerson => new Person
+    public static Person MissingNamesPerson => new()
     {
         PersonId = 10
     };
 
-    public static Person InvalidPerson => new Person
+    public static Person InvalidPerson => new()
     {
         FirstName = null,
         LastName = null,

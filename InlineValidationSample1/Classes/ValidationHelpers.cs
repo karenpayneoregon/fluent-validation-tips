@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using InlineValidationSample1.Models;
+#pragma warning disable CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
 #nullable disable
 namespace InlineValidationSample1.Classes;
 
