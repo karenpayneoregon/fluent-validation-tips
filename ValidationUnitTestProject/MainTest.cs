@@ -157,4 +157,23 @@ public partial class MainTest : TestBase
         Assert.IsTrue(result.IsValid);
 
     }
+
+    [TestMethod]
+    [TestTraits(Numbers)]
+    public void IsIntegerTest()
+    {
+        //var value = "123.45";
+        //Assert.IsFalse(value.IsInteger1());
+        //Assert.IsFalse(value.IsInteger2());
+        //Assert.IsFalse(value.IsInteger());
+        //Assert.IsTrue(value.IsNotInteger());
+
+        Assert.IsTrue("123".IsInteger3());  
+        Assert.IsTrue("-45".IsInteger3()); 
+        Assert.IsTrue("+67".IsInteger3()); 
+        Assert.IsFalse("12a3".IsInteger3()); 
+        Assert.IsFalse("balance -45".IsInteger3()); 
+        Assert.IsFalse("   ".IsInteger3());  
+
+    }
 }

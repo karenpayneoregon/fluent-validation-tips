@@ -1,6 +1,7 @@
 ﻿using PasswordMatchApp.Classes;
 using PasswordMatchApp.Models;
 using ValidationLibrary.Models;
+// ReSharper disable LoopVariableIsNeverChangedInsideLoop
 
 namespace PasswordMatchApp;
 

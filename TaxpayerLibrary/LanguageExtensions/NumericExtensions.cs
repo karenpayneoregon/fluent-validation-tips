@@ -1,10 +1,9 @@
-﻿namespace TaxpayerLibrary.LanguageExtensions;
-public static class NumericExtensions
+﻿
+
+namespace TaxpayerLibrary.LanguageExtensions;
+
+public static partial class StringExtensions
 {
-    /// <summary>
-    /// Determine if a string can represent an integer
-    /// </summary>
-    /// <param name="sender">string to assert</param>
     public static bool IsInteger(this string sender)
     {
         foreach (var c in sender)
@@ -15,10 +14,7 @@ public static class NumericExtensions
         return true;
     }
 
-    /// <summary>
-    /// Indicates a string value can represent a positive int
-    /// </summary>
-    /// <param name="sender">string to assert</param>
-    public static bool IsNotInteger(this string sender)
-        => sender.IsInteger() == false;
+    public static bool IsInteger1(this string sender) => sender.All(char.IsAsciiDigit);
+    public static bool IsInteger2(this string sender) => int.TryParse(sender, out _);
+    public static bool IsNotInteger(this string sender) => !sender.IsInteger();
 }

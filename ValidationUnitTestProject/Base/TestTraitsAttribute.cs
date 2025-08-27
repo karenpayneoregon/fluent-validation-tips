@@ -4,7 +4,8 @@ public enum Trait
 {
     PlaceHolder,
     GeneralValidation,
-    NorthWindValidation
+    NorthWindValidation,
+    Numbers
 }
 /// <summary>
 /// Declarative class for using Trait enum about for traits on test method.
