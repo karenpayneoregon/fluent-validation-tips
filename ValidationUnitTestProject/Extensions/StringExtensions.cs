@@ -68,4 +68,27 @@ public static partial class StringExtensions
 
         return false;
     }
+
+    public static bool IsInteger4(this string input)
+    {
+
+        // First char can be +, -, or digit
+        int start = 0;
+        if (input[0] == '+' || input[0] == '-')
+        {
+            if (input.Length == 1) // string is only "+" or "-"
+                return false;
+
+            start = 1;
+        }
+
+        // Remaining must be digits only
+        for (int index = start; index < input.Length; index++)
+        {
+            if (!char.IsDigit(input[index]))
+                return false;
+        }
+
+        return true;
+    }
 }
