@@ -77,8 +77,5 @@ public class EditModel(Context context, IValidator<Taxpayer> validator) : PageMo
         return RedirectToPage("./Index");
     }
 
-    private bool TaxpayerExists(int id)
-    {
-        return context.Taxpayer.Any(e => e.Id == id);
-    }
+    private bool TaxpayerExists(int id) => context.Taxpayer.Any(e => e.Id == id);
 }
