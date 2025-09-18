@@ -1,3 +1,5 @@
 ﻿# About
 
-Models folder will be move out of this repo soon. 
+Basic sample project for a validation library using `FluentValidation Include`.
+
+:boom: See project `UsingIncludesSampleApp` for usage.

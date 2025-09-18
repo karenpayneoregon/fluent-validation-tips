@@ -16,7 +16,8 @@ public class LastNameValidator : AbstractValidator<IPerson>
 
         RuleFor(x => x.LastName)
             .NotEmpty()
-            .MinimumLength(3);
+            .MinimumLength(3)
+            .WithName("LastName");
 
     }
 }

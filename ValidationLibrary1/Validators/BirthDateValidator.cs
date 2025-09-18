@@ -17,6 +17,7 @@ public class BirthDateValidator : AbstractValidator<IPerson>
     {
         RuleFor(p => p.DateOfBirth)
             .InclusiveBetween(new DateTime(1910, 1, 1), DateTime.Today)
-            .WithMessage("Date of Birth must be between 01/01/1910 and today.");
+            .WithMessage("Birthdate must be between 01/01/1910 and today.")
+            .WithName("BirthDate");
     }
 }

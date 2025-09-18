@@ -1,6 +1,7 @@
 ﻿using ValidationLibrary1.Interfaces;
+using ValidationLibrary1.Models;
 
-namespace ValidationLibrary1.Models;
+namespace UsingIncludesSampleApp.Models;
 public class Person : IPerson
 {
     public int Id { get; set; }
