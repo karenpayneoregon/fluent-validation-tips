@@ -13,27 +13,25 @@ namespace FluentWebApplication1.Models;
 /// </remarks>
 public class Customer
 {
+    public int Id { get; set; }
+    
     [Display(Name = "Birth date")]
     public DateOnly? DateOfBirth { get; set; }
 
-
-    //public string SocialSecurityNumber { get; set; } = string.Empty;
+    [Display(Name = "Social Security Number")]
+    public string SocialSecurityNumber { get; set; }
 
     [Display(Name = "First name")]
     public string FirstName { get; set; }
 
     [Display(Name = "Middle name")]
-    public string? MiddleName { get; set; }
+    public string MiddleName { get; set; }
 
     [Display(Name = "Last name")]
     public string LastName { get; set; } 
 
+    public Gender? Gender { get; set; }
 
-    //public Gender? Gender { get; set; }
+    public override string ToString() => $"{FirstName} {LastName}  {Gender}";
 
-    //public string DriversLicenseOrDmvId { get; set; } = string.Empty;
-
-    //public string? LicenseIssuingState { get; set; }
-
-    //public string? PreferredLanguage { get; set; }
 }

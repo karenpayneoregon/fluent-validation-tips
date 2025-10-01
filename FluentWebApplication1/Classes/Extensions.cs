@@ -1,16 +1,12 @@
-﻿using System.Text.RegularExpressions;
+﻿
+using System.Text.RegularExpressions;
 
 namespace FluentWebApplication1.Classes;
 
 
 /// <summary>
-/// Provides extension methods for various utility operations within the FluentWebApplication1 application.
+/// Provides extension methods for various utility operations.
 /// </summary>
-/// <remarks>
-/// This class contains static methods that extend the functionality of existing types, offering reusable and 
-/// concise solutions for common tasks. The methods in this class are designed to be used without instantiating 
-/// the class, as it is declared as <c>static</c>.
-/// </remarks>
 public static partial class Extensions
 {
 
@@ -31,8 +27,9 @@ public static partial class Extensions
     /// - Validates that the last four digits are not "0000".
     /// </remarks>
     public static bool IsValidSocialSecurityNumber(string value) =>
-        SocialSecurityNumberRegex().IsMatch(value.Replace("-", ""));
-    
+        !string.IsNullOrEmpty(value) && SocialSecurityNumberRegex().IsMatch(value.Replace("-", ""));
+
     [GeneratedRegex(@"^(?!\b(\d)\1+\b)(?!123456789|219099999|078051120)(?!666|000|9\d{2})\d{3}(?!00)\d{2}(?!0{4})\d{4}$")]
     private static partial Regex SocialSecurityNumberRegex();
 }
+

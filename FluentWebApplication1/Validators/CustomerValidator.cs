@@ -13,10 +13,9 @@ public sealed class CustomerValidator : AbstractValidator<Customer>
         RuleFor(x => x.DateOfBirth).DateRangeNotNullRule();
 
 
-        //RuleFor(x => x.SocialSecurityNumber)
-        //    .NotEmpty().WithMessage("Social Security Number is required.")
-        //    .Matches(@"^\d{3}-?\d{2}-?\d{4}$")
-        //    .WithMessage("Enter a valid SSN (###-##-####).");
+        RuleFor(x => x.SocialSecurityNumber)
+            .NotEmpty().WithMessage("Social Security Number is required.")
+            .SocialSecurityNumberRule();
 
         //RuleFor(x => x.FirstName)
         //    .NotEmpty().WithMessage("First Name is required");
@@ -32,11 +31,11 @@ public sealed class CustomerValidator : AbstractValidator<Customer>
         RuleFor(x => x.LastName)
             .NotEmpty().WithMessage("Last Name is required...")
             .MaximumLength(100);
-        
-        //RuleFor(x => x.Gender)
-        //    .NotNull().WithMessage("Please select Male or Female.")
-        //    .Must(g => g == Gender.Male || g == Gender.Female)
-        //    .WithMessage("Please select Male or Female.");
+
+        RuleFor(x => x.Gender)
+            .NotNull().WithMessage("Please select Male or Female.")
+            .Must(g => g is Gender.Male or Gender.Female or Gender.Unspecified)
+            .WithMessage("Please select Male or Female.");
 
         //RuleFor(x => x.DriversLicenseOrDmvId)
         //    .NotEmpty().WithMessage("Driver's license or DMV ID is required.")

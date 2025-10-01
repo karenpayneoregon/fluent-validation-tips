@@ -1,4 +1,6 @@
-﻿using FluentValidation;
+﻿
+using FluentValidation;
+using static FluentWebApplication1.Classes.Extensions;
 
 namespace FluentWebApplication1.Validators;
 
@@ -33,6 +35,20 @@ public static class RuleBuilderExtensions
             .WithMessage($"'{{PropertyName}}' must be after {minDate} and on or before {today}.");
     }
 
+    /// <summary>
+    /// FluentValidation extension for validating a Social Security Number.
+    /// </summary>
+    /// <typeparam name="T">The type of the model being validated.</typeparam>
+    /// <param name="ruleBuilder">The rule builder for the property.</param>
+    /// <returns>
+    /// An <see cref="IRuleBuilderOptions{T, string}"/> with SSN validation applied.
+    /// </returns>
+    public static IRuleBuilderOptions<T, string> SocialSecurityNumberRule<T>(this IRuleBuilder<T, string> ruleBuilder)
+    {
+        return ruleBuilder
+            .Must(IsValidSocialSecurityNumber)
+            .WithMessage("'{PropertyName}' must be a valid Social Security Number.");
+    }
 }
 
 
