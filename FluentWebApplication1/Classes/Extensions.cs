@@ -1,37 +1,34 @@
-﻿using FluentValidation.Results;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace FluentWebApplication1.Classes;
 
-#pragma warning disable CS8618
+
+/// <summary>
+/// Provides extension methods for various utility operations within the FluentWebApplication1 application.
+/// </summary>
+/// <remarks>
+/// This class contains static methods that extend the functionality of existing types, offering reusable and 
+/// concise solutions for common tasks. The methods in this class are designed to be used without instantiating 
+/// the class, as it is declared as <c>static</c>.
+/// </remarks>
 public static partial class Extensions
 {
-    //public static void AddToModelState(this ValidationResult result, ModelStateDictionary modelState)
-    //{
-    //    foreach (var error in result.Errors)
-    //    {
-    //        modelState.AddModelError(error.PropertyName, error.ErrorMessage);
-    //    }
-    //}
+
     /// <summary>
-    /// Is a valid SSN
+    /// Determines whether the specified string is a valid Social Security Number (SSN).
     /// </summary>
-    /// <returns>True if valid, false if invalid SSN</returns>
+    /// <param name="value">The string to validate as a Social Security Number.</param>
+    /// <returns>
+    /// <c>true</c> if the specified string is a valid SSN; otherwise, <c>false</c>.
+    /// </returns>
     /// <remarks>
-    ///
-    /// Handle some commonly encountered “fake” values or ones that might easily be forged in
-    /// an area that might require a user to enter one.
-    /// 
-    /// ^                                       #Start of expression
-    /// (?!\b(\d)\1+-(\d)\1+-(\d)\1+\b)         #Don't allow all matching digits for every field
-    /// (?!123-45-6789|219-09-9999|078-05-1120) #Don't allow "123-45-6789", "219-09-9999" or "078-05-1120"
-    /// (?!666|000|9\d{2})\d{3}                 #Don't allow the SSN to begin with 666, 000 or anything between 900-999
-    /// -                                       #A dash (separating Area and Group numbers)
-    /// (?!00)\d{2}                             #Don't allow the Group Number to be "00"
-    /// -                                       #Another dash (separating Group and Serial numbers)
-    /// (?!0{4})\d{4}                           #Don't allow last four digits to be "0000"
-    /// $                                       #End of expression
+    /// This method validates the format and content of a Social Security Number (SSN) based on the following rules:
+    /// - Prevents commonly encountered fake or forged values.
+    /// - Ensures the SSN does not contain all matching digits for every field.
+    /// - Disallows specific invalid SSNs such as "123-45-6789", "219-09-9999", and "078-05-1120".
+    /// - Ensures the SSN does not begin with "666", "000", or any value between "900-999".
+    /// - Validates that the Group Number is not "00".
+    /// - Validates that the last four digits are not "0000".
     /// </remarks>
     public static bool IsValidSocialSecurityNumber(string value) =>
         SocialSecurityNumberRegex().IsMatch(value.Replace("-", ""));
