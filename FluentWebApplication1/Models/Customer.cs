@@ -20,9 +20,10 @@ public class Customer
     //public string SocialSecurityNumber { get; set; } = string.Empty;
 
     [Display(Name = "First name")]
-    public string FirstName { get; set; } 
+    public string FirstName { get; set; }
 
-    //public string? MiddleName { get; set; }
+    [Display(Name = "Middle name")]
+    public string? MiddleName { get; set; }
 
     [Display(Name = "Last name")]
     public string LastName { get; set; } 

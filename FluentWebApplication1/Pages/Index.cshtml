@@ -1,6 +1,4 @@
 ﻿@page
-@using FluentWebApplication1.Classes
-@using FluentWebApplication1.Models
 
 @model IndexModel
 @{
@@ -9,13 +7,11 @@
 
 <div class="container my-4">
 
-    <div class="card bg-white shadow-sm">
+    <div class="card bg-white shadow">
 
         <div class="card-body p-4">
 
-            <h1 class="h4 mb-4">Customer Information</h1>
-
-
+            <h1 class="mb-4 fs-6">Customer Information</h1>
 
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -33,8 +29,13 @@
                     <input asp-for="@Model.Customer.FirstName" class="form-control" />
                     <span class="text-danger small" asp-validation-for="Customer.FirstName"></span>
                 </div>
+                
+                <div class="col-12 col-md-6">
+                    <label asp-for="Customer.MiddleName" class="form-label"></label>
+                    <input asp-for="Customer.MiddleName" class="form-control"  />
+                    <span class="text-danger small" asp-validation-for="Customer.MiddleName"></span>
+                </div>
 
-                <!-- Last Name -->
                 <div class="col-12 col-md-6">
                     <label asp-for="@Model.Customer.LastName" class="form-label"></label>
                     <input asp-for="@Model.Customer.LastName" class="form-control"/>
@@ -56,6 +57,11 @@
     </div>
 </div>
 
+
+@* 
+Client-side validation
+https://learn.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-9.0#client-side-validation
+*@
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
