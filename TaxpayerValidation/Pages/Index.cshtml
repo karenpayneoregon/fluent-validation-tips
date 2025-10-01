@@ -1,109 +1,40 @@
 ﻿@page
 @model TaxpayerValidation.Pages.IndexModel
 
-@{
-    ViewData["Title"] = "List";
-}
+<div class="container mt-4">
+    <h2>Taxpayer List</h2>
 
-<style>
-
-    .tbodyDiv {
-        max-height: clamp(8em,100vh,450px);
-        overflow: auto;
-    }
-
-    .table tbody tr.highlight td {
-        background-color: yellow;
-    }
-
-
-    .one a {
-        color: #000;
-        margin: 0 20px 0 0;
-        position: relative;
-    }
-
-        .one a:before {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background-color: #000;
-            content: '';
-            -webkit-transform: translateY(8px);
-            opacity: 0;
-            transition-property: -webkit-transform, opacity;
-            transition-duration: .3s;
-        }
-
-        .one a:hover:before {
-            -webkit-transform: translateY(0);
-            opacity: 1;
-        }
-
-</style>
-
-<h1>List</h1>
-
-<p>
-    <div class="one">
-        <a asp-page="Create">Create New</a>
+    <!-- Header -->
+    <div class="row fw-bold border-bottom pb-2 mb-2 align-items-center">
+        <div class="col-auto">ID</div>
+        <div class="col">First Name</div>
+        <div class="col">Last Name</div>
+        <div class="col">SSN (masked)</div>
+        <div class="col">Start date</div>
+        <div class="col text-end">Actions</div>
     </div>
-    
-</p>
 
-<div class="overflow-auto" style="min-height:200px;max-height:550px">
-    <table class="table table-bordered text-start table-striped" data-toggle="table">
-        <thead class="sticky-top table-primary">
-            <tr>
-                <th width="10%">
-                    @Html.DisplayNameFor(model => model.Taxpayer[0].FirstName)
-                </th>
-                <th width="10%">
-                    @Html.DisplayNameFor(model => model.Taxpayer[0].LastName)
-                </th>
-                <th width="10%">
-                    @Html.DisplayNameFor(model => model.Taxpayer[0].SSN)
-                </th>
-                <th width="5%">
-                    @Html.DisplayNameFor(model => model.Taxpayer[0].PIN)
-                </th>
-                <th width="10%">
-                    @Html.DisplayNameFor(model => model.Taxpayer[0].StartDate)
-                </th>
-                <th width="14%" >Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Taxpayer)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FirstName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LastName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SsnHidden)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PIN)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.StartDate)
-                    </td>
-                    <td>
-                        <div class="one">
-                            <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                            <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                            <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-                        </div>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    @foreach (var item in Model.Taxpayer)
+    {
+        <div class="row border-bottom py-2 align-items-center">
+            <div class="col-auto">@item.Id</div>
+            <div class="col">@item.FirstName</div>
+            <div class="col">@item.LastName</div>
 
+            <!-- Masked SSN -->
+            <div class="col">@item.SsnHidden</div>
+
+            <!-- Correct, resilient StartDate formatting -->
+            <div class="col">@($"{item.StartDate:MM/dd/yyyy}")</div>
+
+            <div class="col text-end">
+                <div class="btn-group btn-group-sm" role="group" aria-label="Actions">
+                    <a class="btn btn-primary" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-success" asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                    <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </div>
+            </div>
+
+        </div>
+    }
 </div>

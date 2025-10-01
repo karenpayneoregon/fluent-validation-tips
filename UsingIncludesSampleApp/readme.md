@@ -15,3 +15,29 @@ public class BasePersonValidator : AbstractValidator<IPerson>
     }
 }
 ```
+
+## BasePersonValidator visualization
+
+```mermaid
+classDiagram
+    class IPerson {
+        +string FirstName
+        +string LastName
+        +DateTime DateOfBirth
+    }
+
+    class AbstractValidator~IPerson~
+    class BasePersonValidator
+    class FirstNameValidator
+    class LastNameValidator
+    class BirthDateValidator
+
+    BasePersonValidator --|> AbstractValidator~IPerson~
+    FirstNameValidator --|> AbstractValidator~IPerson~
+    LastNameValidator --|> AbstractValidator~IPerson~
+    BirthDateValidator --|> AbstractValidator~IPerson~
+
+    BasePersonValidator ..> FirstNameValidator : includes
+    BasePersonValidator ..> LastNameValidator : includes
+    BasePersonValidator ..> BirthDateValidator : includes
+```

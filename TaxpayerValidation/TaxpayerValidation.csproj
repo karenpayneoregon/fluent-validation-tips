@@ -47,6 +47,7 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="assets\GitHistory\images\" />
+	  <Folder Include="Pages\Originals\" />
 	  <Folder Include="wwwroot\images\" />
 	</ItemGroup>
 	<ItemGroup>

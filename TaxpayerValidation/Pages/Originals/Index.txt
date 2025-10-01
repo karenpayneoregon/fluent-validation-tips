@@ -1,0 +1,109 @@
+@page
+@model TaxpayerValidation.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<style>
+
+    .tbodyDiv {
+        max-height: clamp(8em,100vh,450px);
+        overflow: auto;
+    }
+
+    .table tbody tr.highlight td {
+        background-color: yellow;
+    }
+
+
+    .one a {
+        color: #000;
+        margin: 0 20px 0 0;
+        position: relative;
+    }
+
+        .one a:before {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #000;
+            content: '';
+            -webkit-transform: translateY(8px);
+            opacity: 0;
+            transition-property: -webkit-transform, opacity;
+            transition-duration: .3s;
+        }
+
+        .one a:hover:before {
+            -webkit-transform: translateY(0);
+            opacity: 1;
+        }
+
+</style>
+
+<h1>List</h1>
+
+<p>
+    <div class="one">
+        <a asp-page="Create">Create New</a>
+    </div>
+    
+</p>
+
+<div class="overflow-auto" style="min-height:200px;max-height:550px">
+    <table class="table table-bordered text-start table-striped" data-toggle="table">
+        <thead class="sticky-top table-primary">
+            <tr>
+                <th width="10%">
+                    @Html.DisplayNameFor(model => model.Taxpayer[0].FirstName)
+                </th>
+                <th width="10%">
+                    @Html.DisplayNameFor(model => model.Taxpayer[0].LastName)
+                </th>
+                <th width="10%">
+                    @Html.DisplayNameFor(model => model.Taxpayer[0].SSN)
+                </th>
+                <th width="5%">
+                    @Html.DisplayNameFor(model => model.Taxpayer[0].PIN)
+                </th>
+                <th width="10%">
+                    @Html.DisplayNameFor(model => model.Taxpayer[0].StartDate)
+                </th>
+                <th width="14%" >Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Taxpayer)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SsnHidden)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PIN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        <div class="one">
+                            <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
