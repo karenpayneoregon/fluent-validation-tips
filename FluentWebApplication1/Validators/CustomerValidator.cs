@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using FluentWebApplication1.Classes;
 using FluentWebApplication1.Models;
 
 namespace FluentWebApplication1.Validators;
@@ -17,16 +16,11 @@ public sealed class CustomerValidator : AbstractValidator<Customer>
             .NotEmpty().WithMessage("Social Security Number is required.")
             .SocialSecurityNumberRule();
 
-        //RuleFor(x => x.FirstName)
-        //    .NotEmpty().WithMessage("First Name is required");
 
         RuleFor(x => x.FirstName)
             .Cascade(CascadeMode.StopOnFirstFailure)
             .NotEmpty().WithMessage("First Name is required...");
 
-        //RuleFor(x => x.MiddleName)
-        //    .MaximumLength(100)
-        //    .When(x => !string.IsNullOrWhiteSpace(x.MiddleName));
 
         RuleFor(x => x.LastName)
             .NotEmpty().WithMessage("Last Name is required...")
@@ -37,29 +31,10 @@ public sealed class CustomerValidator : AbstractValidator<Customer>
             .Must(g => g is Gender.Male or Gender.Female or Gender.Unspecified)
             .WithMessage("Please select Male or Female.");
 
-        //RuleFor(x => x.DriversLicenseOrDmvId)
-        //    .NotEmpty().WithMessage("Driver's license or DMV ID is required.")
-        //    .Matches(@"\S+").WithMessage("Driver's license or DMV ID cannot be blank.");
-
-        //RuleFor(x => x.LicenseIssuingState)
-        //    .Cascade(CascadeMode.Stop)
-        //    .NotEmpty().WithMessage("License issuing state is required.")
-        //    .Must(s => UnitedStates.AllowedStates.Contains(s!))
-        //    .WithMessage("Please select a valid 2-letter issuing state.");
     }
-
 
 }
 
-//public class BirthDateValidator : AbstractValidator<Customer>
-//{
-//    public BirthDateValidator()
-//    {
-//        RuleFor(p => p.DateOfBirth)
-//            .InclusiveBetween(new DateTime(1910, 1, 1), DateTime.Today)
-//            .WithMessage("Birthdate must be between 01/01/1910 and today.")
-//            .WithName("BirthDate");
-//    }
-//}
+
 
 
