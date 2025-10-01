@@ -4,8 +4,7 @@ using FluentWebApplication1.Models;
 using FluentWebApplication1.Validators;
 using Serilog;
 using Serilog.Events;
-using System.Diagnostics;
-using System.Reflection;
+
 using static System.DateTime;
 
 namespace FluentWebApplication1;
