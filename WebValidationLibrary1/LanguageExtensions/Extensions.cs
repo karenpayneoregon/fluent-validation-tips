@@ -1,7 +1,7 @@
 ﻿
 using System.Text.RegularExpressions;
 
-namespace FluentWebApplication1.Classes;
+namespace WebValidationLibrary1.LanguageExtensions;
 
 
 /// <summary>

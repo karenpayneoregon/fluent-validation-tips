@@ -1,8 +1,7 @@
-﻿
-using FluentValidation;
-using static FluentWebApplication1.Classes.Extensions;
+﻿using FluentValidation;
+using static WebValidationLibrary1.LanguageExtensions.Extensions;
 
-namespace FluentWebApplication1.Validators;
+namespace WebValidationLibrary1.LanguageExtensions;
 
 /// <summary>
 /// Provides extension methods for adding custom validation rules to properties

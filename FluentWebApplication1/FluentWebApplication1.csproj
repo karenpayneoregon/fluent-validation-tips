@@ -31,6 +31,10 @@
 		<PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\WebValidationLibrary1\WebValidationLibrary1.csproj" />
+	</ItemGroup>
+
 	<!--<ItemGroup>
 		<PackageReference Include="ConsoleConfigurationLibrary" Version="1.0.0.12" />
 	</ItemGroup>-->

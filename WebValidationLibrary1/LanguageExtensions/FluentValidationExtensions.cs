@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
 
-namespace FluentWebApplication1.Classes;
+namespace WebValidationLibrary1.LanguageExtensions;
 
 /// <summary>
 /// FluentValidation helpers to keep validation+error handling terse and consistent.
