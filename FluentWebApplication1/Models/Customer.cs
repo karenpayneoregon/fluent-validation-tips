@@ -1,6 +1,8 @@
 ﻿
 #nullable disable
 using System.ComponentModel.DataAnnotations;
+using WebValidationLibrary1.Interfaces;
+using WebValidationLibrary1.Models;
 
 namespace FluentWebApplication1.Models;
 /// <summary>
@@ -11,7 +13,7 @@ namespace FluentWebApplication1.Models;
 /// social security number, gender, and identification details. It is designed to be used in 
 /// scenarios where customer data needs to be validated and processed.
 /// </remarks>
-public class Customer
+public class Customer : INames, IGender
 {
     public int Id { get; set; }
     

@@ -1,4 +1,5 @@
-﻿namespace FluentWebApplication1.Models;
+﻿#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+namespace WebValidationLibrary1.Models;
 
 /// <summary>
 /// Represents the gender of an individual.
