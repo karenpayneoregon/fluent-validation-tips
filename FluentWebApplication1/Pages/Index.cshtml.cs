@@ -12,7 +12,7 @@ public class IndexModel(IValidator<Customer> validator) : PageModel
 
     public IActionResult OnGet()
     {
-        Customer = new Customer();
+        Customer = new Customer() {SocialSecurityNumber = "106823302" };
         return Page();
     }
     
