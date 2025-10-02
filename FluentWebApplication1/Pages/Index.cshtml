@@ -25,7 +25,7 @@
                                class="form-control" 
                                style="width: 200px" 
                                type="date"/>
-                        <span class="text-danger small" asp-validation-for="Customer.DateOfBirth"></span>
+                        <span class="text-danger small fw-bold" asp-validation-for="Customer.DateOfBirth"></span>
                     </div>
                 </div>
 
@@ -34,14 +34,14 @@
                     <input asp-for="Customer.SocialSecurityNumber" 
                            style="width: 120px" 
                            class="form-control"/>
-                    <span class="text-danger small" asp-validation-for="Customer.SocialSecurityNumber"></span>
+                    <span class="text-danger small fw-bold" asp-validation-for="Customer.SocialSecurityNumber"></span>
                 </div>
 
                 <div class="col-12 col-md-6 mb-2">
                     <label asp-for="@Model.Customer.FirstName" class="form-label"></label>
                     <input asp-for="@Model.Customer.FirstName"
                            class="form-control"/>
-                    <span class="text-danger small" asp-validation-for="Customer.FirstName"></span>
+                    <span class="text-danger small fw-bold" asp-validation-for="Customer.FirstName"></span>
                 </div>
 
                 <div class="col-12 col-md-6 mb-2">
@@ -49,14 +49,14 @@
                     <input asp-for="Customer.MiddleName" 
                            class="form-control" 
                            style="width: 250px"/>
-                    <span class="text-danger small" asp-validation-for="Customer.MiddleName"></span>
+                    <span class="text-danger small fw-bold" asp-validation-for="Customer.MiddleName"></span>
                 </div>
 
                 <div class="col-12 col-md-6 mb-2">
                     <label asp-for="@Model.Customer.LastName" class="form-label"></label>
                     <input asp-for="@Model.Customer.LastName" 
                            class="form-control"/>
-                    <span class="text-danger small" asp-validation-for="Customer.LastName"></span>
+                    <span class="text-danger small fw-bold" asp-validation-for="Customer.LastName"></span>
                 </div>
 
                 
@@ -68,11 +68,11 @@
                         <div class="col">
                             <select class="form-select" style="width: 145px" asp-for="Customer.Gender" >
                                 <option value="" >Select...</option>
-                                <option value="Unspecified">Unspecified</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
+                                <option value="Unspecified">Unspecified</option>
                             </select>
-                            <span class="text-danger small" asp-validation-for="Customer.Gender"></span>
+                            <span class="text-danger small fw-bold" asp-validation-for="Customer.Gender"></span>
                         </div>
                     </div>
                 </div>
