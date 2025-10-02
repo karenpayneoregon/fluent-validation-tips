@@ -5,9 +5,9 @@
     ViewData["Title"] = "Customer Information";
 }
 
-<div class="container my-4">
+<div class="container my-4" data-bs-theme="dark">
 
-    <div class="card bg-white shadow">
+    <div class="card shadow">
 
         <div class="card-body p-4">
 
@@ -15,7 +15,7 @@
 
             <form method="post">
 
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div asp-validation-summary="ModelOnly"></div>
 
                 <div class="col-12 mb-2">
                     <div class="col-12 col-md-12">
@@ -77,7 +77,7 @@
                     </div>
                 </div>
 
-                <div class="row g-3">
+                <div class="row g-3 mt-3">
 
                     <!-- Submit -->
                     <div class="col-12">
