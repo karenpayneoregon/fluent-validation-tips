@@ -1,7 +1,7 @@
 ﻿namespace ValidateBirthDateApp.Interfaces;
 
 /// <summary>
-/// For validation rules for first and last name
+/// Represents an individual with personal details such as first name, last name, and birthdate.
 /// </summary>
 public interface IPerson
 {

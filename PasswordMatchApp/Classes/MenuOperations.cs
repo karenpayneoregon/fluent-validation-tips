@@ -1,6 +1,12 @@
 ﻿using PasswordMatchApp.Models;
 
 namespace PasswordMatchApp.Classes;
+
+/// <summary>
+/// Provides operations for creating and managing menu interactions
+/// within the application, including generating menus and handling
+/// menu items.
+/// </summary>
 public class MenuOperations
 {
     // Style for menu
