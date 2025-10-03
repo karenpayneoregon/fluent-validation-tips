@@ -53,8 +53,7 @@ public sealed class CustomerValidator : AbstractValidator<Customer>
     {
 
         RuleFor(x => x.DateOfBirth).DateRangeNotNullRule();
-
-
+        
         RuleFor(x => x.SocialSecurityNumber)
             .NotEmpty().WithMessage("Social Security Number is required.")
             .SocialSecurityNumberRule();
