@@ -5,14 +5,14 @@ using ValidationLibrary.Models;
 namespace ValidationLibrary.Validators;
 
 /// <summary>
-/// Provides validation logic for the <see cref="ValidationLibrary.Models.Person.Password"/> property.
+/// Provides validation logic for the <see cref="Person.Password"/> property.
 /// </summary>
 /// <remarks>
 /// This validator ensures that the password meets complexity requirements and matches the confirmation password.
 /// It includes the following rules:
 /// <list type="bullet">
-/// <item><description>Applies complexity checks using <see cref="Validators.PasswordComplexityValidator"/>.</description></item>
-/// <item><description>Ensures the password matches the <see cref="Models.Person.PasswordConfirmation"/> property.</description></item>
+/// <item><description>Applies complexity checks using <see cref="PasswordComplexityValidator"/>.</description></item>
+/// <item><description>Ensures the password matches the <see cref="Person.PasswordConfirmation"/> property.</description></item>
 /// </list>
 /// </remarks>
 public class PasswordValidator : AbstractValidator<Person>
