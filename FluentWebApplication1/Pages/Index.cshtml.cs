@@ -1,8 +1,11 @@
 ﻿using FluentValidation;
 using FluentValidation.AspNetCore;
+using FluentWebApplication1.Classes;
 using FluentWebApplication1.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Serilog;
+using WebValidationLibrary1.LanguageExtensions;
 
 namespace FluentWebApplication1.Pages;
 
@@ -17,12 +20,14 @@ namespace FluentWebApplication1.Pages;
 /// </remarks>
 public class IndexModel(IValidator<Customer> validator) : PageModel
 {
-    
+
     /// <summary>
     /// Gets or sets the customer information.
     /// </summary>
     [BindProperty]
     public Customer Customer { get; set; } = new();
+    
+    
 
     /// <summary>
     /// Initializes a new instance of the <see cref="IndexModel"/> class.
@@ -30,10 +35,10 @@ public class IndexModel(IValidator<Customer> validator) : PageModel
     /// <returns></returns>
     public IActionResult OnGet()
     {
-        Customer = new Customer() {SocialSecurityNumber = "106823302" };
+        Customer = new Customer() { SocialSecurityNumber = "106823302" };
         return Page();
     }
-    
+
     /// <summary>
     /// Handles the submission of the form by validating the <see cref="Customer"/> model.
     /// </summary>
@@ -53,17 +58,11 @@ public class IndexModel(IValidator<Customer> validator) : PageModel
         var result = validator.Validate(Customer);
         if (!result.IsValid)
         {
-            // not for production use
-            foreach (var error in result.Errors)
-            {
-                Console.WriteLine(error.ErrorMessage);
-            }
-            
+            Log.Information("Validation failure on page {PageName} {@errors}", 
+                PageHelpers.GetCurrentPageName(HttpContext.Request), result.ToJson());
             result.AddToModelState(ModelState);
-            return Page();
         }
 
-        // If valid, proceed 
         return Page();
     }
 

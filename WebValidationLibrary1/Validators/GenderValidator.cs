@@ -23,6 +23,7 @@ public class GenderValidator : AbstractValidator<IGender>
     public GenderValidator()
     {
         RuleFor(x => x.Gender)
+            .Cascade(CascadeMode.StopOnFirstFailure)
             .NotNull().WithMessage("Please select Male or Female.")
             .Must(g => g is Gender.Male or Gender.Female or Gender.Unspecified)
             .WithMessage("Please select Male or Female.");

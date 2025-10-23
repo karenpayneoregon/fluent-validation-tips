@@ -4,32 +4,30 @@ using ValidationLibrary.Models;
 
 namespace ValidationLibrary.Validators;
 
+/// <summary>
+/// Provides validation logic for the <see cref="ValidationLibrary.Models.Person.Password"/> property.
+/// </summary>
+/// <remarks>
+/// This validator ensures that the password meets complexity requirements and matches the confirmation password.
+/// It includes the following rules:
+/// <list type="bullet">
+/// <item><description>Applies complexity checks using <see cref="Validators.PasswordComplexityValidator"/>.</description></item>
+/// <item><description>Ensures the password matches the <see cref="Models.Person.PasswordConfirmation"/> property.</description></item>
+/// </list>
+/// </remarks>
 public class PasswordValidator : AbstractValidator<Person>
 {
-
     public PasswordValidator()
     {
+        // Run complexity checks first, then match check.
+        ClassLevelCascadeMode = CascadeMode.Stop;
+        
+        RuleFor(p => p.Password).SetValidator(new PasswordComplexityValidator());
 
-        RuleFor(person => person.Password.Length)
-            .GreaterThan(7);
-
-        RuleFor(person => person.Password)
+        RuleFor(p => p.Password)
             .Equal(p => p.PasswordConfirmation)
-            .WithState(x => StatusCodes.PasswordsMisMatch);
-
+            .WithState(_ => StatusCodes.PasswordsMisMatch)
+            .WithMessage("Password and confirmation must match.");
     }
 }
 
-public class PassWordValidator : AbstractValidator<Person>
-{
-    public PassWordValidator()
-    {
-        RuleFor(p => p.Password).NotEmpty().WithMessage("Your password cannot be empty")
-            .MinimumLength(8).WithMessage("Your password length must be at least 8.")
-            .MaximumLength(16).WithMessage("Your password length must not exceed 16.")
-            .Matches(@"[A-Z]+").WithMessage("Your password must contain at least one uppercase letter.")
-            .Matches(@"[a-z]+").WithMessage("Your password must contain at least one lowercase letter.")
-            .Matches(@"[0-9]+").WithMessage("Your password must contain at least one number.")
-            .Matches(@"[\!\?\*\.]+").WithMessage("Your password must contain at least one (!? *.).");
-    }
-}

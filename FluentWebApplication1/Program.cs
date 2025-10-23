@@ -8,8 +8,20 @@ using Serilog.Events;
 using static System.DateTime;
 
 namespace FluentWebApplication1;
+
+/// <summary>
+/// Represents the entry point of the FluentWebApplication1 application.
+/// </summary>
+/// <remarks>
+/// This class is responsible for configuring and running the ASP.NET Core web application. 
+/// It sets up services, middleware, and logging using Serilog and FluentValidation.
+/// </remarks>
 public class Program
 {
+    /// <summary>
+    /// The main entry point for the application.
+    /// </summary>
+    /// <param name="args"></param>
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);

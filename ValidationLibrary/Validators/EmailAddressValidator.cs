@@ -10,6 +10,9 @@ namespace ValidationLibrary.Validators;
 /// </summary>
 public class EmailAddressValidator : AbstractValidator<Person>
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="EmailAddressValidator"/> class.
+    /// </summary>
     public EmailAddressValidator()
     {
         // this only validates an address contains a @ character
