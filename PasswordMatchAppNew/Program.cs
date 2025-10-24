@@ -25,10 +25,10 @@ internal partial class Program
 
             if (!result.IsValid)
             {
-                AnsiConsole.MarkupLine($"[deeppink3_1]{p.UserName}[/] has validation errors:");
+                AnsiConsole.MarkupLine($"[orangered1]{p.UserName}[/] validation errors:");
                 foreach (var error in result.Errors)
                 {
-                    AnsiConsole.MarkupLine($" - {error.PropertyName}: {error.ErrorMessage}");
+                    AnsiConsole.MarkupLine($" :small_orange_diamond: {error.PropertyName}: {error.ErrorMessage}");
                 }
                 Console.WriteLine();
             }

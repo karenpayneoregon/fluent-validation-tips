@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using PasswordMatchAppNew.Classes;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Text;
 using static ConsoleConfigurationLibrary.Classes.ApplicationConfiguration;
 
 // ReSharper disable once CheckNamespace
@@ -20,8 +21,10 @@ internal partial class Program
 
         WindowUtility.SetConsoleWindowPosition(WindowUtility.AnchorWindow.Center);
 
-        SetupLogging.Development();
-        Setup();
+        Console.OutputEncoding = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
+        Console.InputEncoding = Encoding.UTF8;
+        //SetupLogging.Development();
+        //Setup();
 
     }
     private static void Setup()
