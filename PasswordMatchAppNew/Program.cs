@@ -43,7 +43,7 @@ internal partial class Program
         {
             UserName = "karenp",
             EmailAddress = "karenp@example.com",
-            Password = "Password13!",
+            Password = "Password13!",               // passwords do not match
             PasswordConfirmation = "Password123!",
             PhoneNumber = "555-123-4567"
         },
@@ -51,9 +51,9 @@ internal partial class Program
         new Person
         {
             UserName = "johns",
-            EmailAddress = "johns@example.com",
-            Password = "SecurePass456!",
-            PasswordConfirmation = "SecurePass456!",
+            EmailAddress = "johnsexample.com",      // invalid email address
+            Password = "secureass456",              // valid password
+            PasswordConfirmation = "secureass456",
             PhoneNumber = "555-234-5678"
         },
 
@@ -61,7 +61,7 @@ internal partial class Program
         {
             UserName = "maryt",
             EmailAddress = "maryt@example.com",
-            Password = "@MyPass789",
+            Password = "@MyPass789",                // passwords do not match
             PasswordConfirmation = "@MyPass789!",
             PhoneNumber = "555-345-6789"
         },
@@ -72,7 +72,7 @@ internal partial class Program
             EmailAddress = "alexb@example.com",
             Password = "StrongOne101!",
             PasswordConfirmation = "StrongOne101!",
-            PhoneNumber = "555-456-7890"
+            PhoneNumber = "555x456-7890"            // invalid phone number
         }
     ];
 }
