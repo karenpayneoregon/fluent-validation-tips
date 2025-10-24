@@ -1,6 +1,13 @@
 ﻿@page
 @model TaxpayerValidation.Pages.IndexModel
 
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@* for a real app point to a local CDN *@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
 <div class="container mt-4">
     <h2>Taxpayer List</h2>
 
@@ -27,11 +34,26 @@
             <!-- Correct, resilient StartDate formatting -->
             <div class="col">@($"{item.StartDate:MM/dd/yyyy}")</div>
 
+            @*  Alternative button style without icons
             <div class="col text-end">
                 <div class="btn-group btn-group-sm" role="group" aria-label="Actions">
                     <a class="btn btn-primary" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
                     <a class="btn btn-success" asp-page="./Details" asp-route-id="@item.Id">Details</a>
                     <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </div>
+            </div> *@
+            
+            <div class="col text-end">
+                <div class="btn-group btn-group-sm" role="group" aria-label="Actions">
+                    <a class="btn btn-primary" asp-page="./Edit" asp-route-id="@item.Id" title="Edit">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                    <a class="btn btn-success" asp-page="./Details" asp-route-id="@item.Id" title="Details">
+                        <i class="bi bi-info-circle"></i>
+                    </a>
+                    <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.Id" title="Delete">
+                        <i class="bi bi-trash"></i>
+                    </a>
                 </div>
             </div>
 
