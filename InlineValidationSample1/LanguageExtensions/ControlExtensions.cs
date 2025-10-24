@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace InlineValidationSample1.LanguageExtensions;
+﻿namespace InlineValidationSample1.LanguageExtensions;
 
 public static class ControlExtensions
 {

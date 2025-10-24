@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using ValidationLibrary.Interfaces;
 
 namespace ValidationLibrary.Models;
-public class Person
+public class Person : IUser
 {
     public string UserName { get; set; }
     public string EmailAddress { get; set; }
