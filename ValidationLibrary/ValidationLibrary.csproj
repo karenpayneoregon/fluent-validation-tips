@@ -10,4 +10,8 @@
     <PackageReference Include="FluentValidation" Version="11.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Validators\Old\" />
+  </ItemGroup>
+
 </Project>

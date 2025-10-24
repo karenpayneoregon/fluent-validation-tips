@@ -2,6 +2,8 @@
 
 Demonstrates `password matching` functionality using NuGet package `FluentValidation` for input validation. Validators can be used in other project types besides console applications.
 
+This project is a simplier and better version than `PasswordMatchApp` project to learn from.
+
 ## Features
 
 - User registration with password confirmation
