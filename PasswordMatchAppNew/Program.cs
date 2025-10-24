@@ -1,5 +1,7 @@
 ﻿using PasswordMatchAppNew.Classes;
 using Spectre.Console;
+using Spectre.Console.Json;
+using System.Text.Json;
 using ValidationLibrary.Models;
 using ValidationLibrary.Validators;
 
@@ -34,7 +36,36 @@ internal partial class Program
             }
         }
 
+        Console.WriteLine();
+
+        //DisplayValidationErrors();
+
         SpectreConsoleHelpers.ExitPrompt();
+    }
+
+    private static void DisplayValidationErrors()
+    {
+        var people = People();
+        var john = people.First(x => x.UserName == "johns");
+        
+        PersonValidator validator1 = new();
+        var result1 = validator1.Validate(john);
+        
+        var json = new JsonText(JsonSerializer.Serialize(result1, Indented))
+            .BracesColor(Color.Red)
+            .BracketColor(Color.Green)
+            .ColonColor(Color.White)
+            .CommaColor(Color.Cyan1)
+            .StringColor(Color.GreenYellow)
+            .NumberColor(Color.White)
+            .BooleanColor(Color.Red)
+            .MemberColor(Color.DeepPink1)
+            .NullColor(Color.Green);
+
+        AnsiConsole.Write(new Panel(json).Header("Errors")
+            .Collapse()
+            .BorderColor(Color.White));
+        
     }
 
     internal static List<Person> People() =>
@@ -75,4 +106,6 @@ internal partial class Program
             PhoneNumber = "555x456-7890"            // invalid phone number
         }
     ];
+
+    public static JsonSerializerOptions Indented => new() { WriteIndented = true };
 }
