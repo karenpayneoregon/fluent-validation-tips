@@ -34,9 +34,9 @@ internal class Samples
         var validator = new PersonValidator();
 
         ValidationResult result = validator.Validate(MockedData.InvalidPerson, options => options.IncludeRuleSets(
-            "Names",
-            "Identifier",
-            "Birth"));
+            nameof(RuleNames.Names),
+            nameof(RuleNames.Identifier),
+            nameof(RuleNames.Birth)));
 
 
         if (result.IsValid)

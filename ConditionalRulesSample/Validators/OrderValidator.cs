@@ -3,6 +3,7 @@ using ConditionalRulesSample.Classes;
 using ConditionalRulesSample.Models;
 using FluentValidation;
 using FluentValidation.Results;
+// ReSharper disable SuspiciousTypeConversion.Global
 
 namespace ConditionalRulesSample.Validators;
 
@@ -19,6 +20,7 @@ public class OrderValidator : AbstractValidator<Order>
             
         //    RuleFor(order => order.Total).Equals(DapperOperations.OrderTotalWithDiscount(customer))
         //});
+        // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
         RuleFor(order => order.CanDiscount).Equals(true);
     }
     public override ValidationResult Validate(ValidationContext<Order> context)

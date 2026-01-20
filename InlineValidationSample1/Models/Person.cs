@@ -67,6 +67,7 @@ public class Person : IHuman, INotifyPropertyChanged
             // validate against the BirthDateRule extension method
             v => v.RuleFor(x => x.BirthDate)
                 .BirthDateRule()
+                .WithMessage($"{nameof(BirthDate).SplitCase()} is not a valid date.")
 
         };
 
@@ -91,4 +92,7 @@ public class Person : IHuman, INotifyPropertyChanged
         OnPropertyChanged(propertyName);
         return true;
     }
+    
+    
 }
+

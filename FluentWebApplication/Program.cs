@@ -7,6 +7,7 @@ using Serilog;
 using Serilog.Events;
 using System.Diagnostics;
 using System.Reflection;
+using FluentWebApplication.Classes.Filters;
 using static System.DateTime;
 
 namespace FluentWebApplication;
@@ -29,6 +30,12 @@ public class Program
 
         // Enable FluentValidation's automatic validation
         builder.Services.AddFluentValidationAutoValidation();
+
+
+        builder.Services.AddRazorPages(options =>
+        {
+            options.Conventions.ConfigureFilter(new StripQuotesPageFilter());
+        });
 
 
         builder.Host.UseSerilog((context, configuration) =>
@@ -74,3 +81,4 @@ public class Program
 
 
 }
+

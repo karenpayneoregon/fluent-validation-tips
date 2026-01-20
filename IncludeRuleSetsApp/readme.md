@@ -2,6 +2,8 @@
 
 This example demonstrates how to use FluentValidation with rule sets to validate different scenarios.
 
+[Article](https://dev.to/karenpayneoregon/fluentvalidation-rule-sets-35ck)
+
 ## Rule Sets
 
 - `Names`: Validates that `FirstName` and `LastName` are not null.
