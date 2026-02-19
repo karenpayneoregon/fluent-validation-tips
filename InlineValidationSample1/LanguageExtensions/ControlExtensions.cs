@@ -19,7 +19,7 @@ public static class ControlExtensions
 
             if (child.HasChildren)
             {
-                foreach (T descendant in Descendants<T>(child))
+                foreach (T descendant in child.Descendants<T>())
                 {
                     yield return descendant;
                 }
